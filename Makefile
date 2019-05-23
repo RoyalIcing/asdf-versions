@@ -1,8 +1,8 @@
-ELIXIR_VERSION := 1.8.2
-ERLANG_VERSION := 22.0.1
-GOLANG_VERSION := 1.12.5
-NODEJS_VERSION := 12.3.1
-RUBY_VERSIONS := 2.6.3 2.5.5
+elixir_versions := 1.8.2
+erlang_versions := 22.0.1
+golang_versions := 1.12.5
+nodejs_versions := 12.3.1
+ruby_versions := 2.6.3 2.5.5
 
 default:
 	@make -j 10 list
@@ -24,29 +24,29 @@ list_ruby:
 
 list: list_elixir list_erlang list_golang list_nodejs list_ruby
 
-install: install_elixir install_golang install_nodejs install_ruby
+install: install_elixir install_erlang install_golang install_nodejs install_ruby
 
 install_elixir:
-	asdf install elixir $(ELIXIR_VERSION)
+	$(foreach elixir_version,$(elixir_versions),asdf install elixir $(elixir_version))
 
 install_erlang:
-	asdf install erlang $(ERLANG_VERSION)
+	$(foreach erlang_version,$(erlang_versions),asdf install erlang $(erlang_version))
 
 install_golang:
-	asdf install golang $(GOLANG_VERSION)
+	$(foreach golang_version,$(golang_versions),asdf install golang $(golang_version))
 
 install_nodejs:
-	asdf install nodejs $(NODEJS_VERSION)
+	$(foreach nodejs_version,$(nodejs_versions),asdf install nodejs $(nodejs_version))
 
 install_ruby:
-	$(foreach ruby_version,$(RUBY_VERSIONS),$(shell asdf install ruby $(ruby_version)))
+	$(foreach ruby_version,$(ruby_versions),asdf install ruby $(ruby_version))
 
 set_globals:
-	asdf global elixir $(ELIXIR_VERSION)
-	asdf global erlang $(ERLANG_VERSION)
-	asdf global golang $(GOLANG_VERSION)
-	asdf global nodejs $(NODEJS_VERSION)
-	asdf global ruby $(RUBY_VERSION)
+	asdf global elixir $(lastword $(elixir_versions))
+	asdf global erlang $(lastword $(erlang_versions))
+	asdf global golang $(lastword $(golang_versions))
+	asdf global nodejs $(lastword $(nodejs_versions))
+	asdf global ruby $(lastword $(ruby_versions))
 
 plugins:
 	-asdf plugin-add clojure         https://github.com/halcyon/asdf-clojure.git
