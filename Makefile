@@ -42,11 +42,11 @@ install_ruby:
 	$(foreach ruby_version,$(ruby_versions),asdf install ruby $(ruby_version))
 
 set_globals:
-	asdf global elixir $(lastword $(elixir_versions))
-	asdf global erlang $(lastword $(erlang_versions))
-	asdf global golang $(lastword $(golang_versions))
-	asdf global nodejs $(lastword $(nodejs_versions))
-	asdf global ruby $(lastword $(ruby_versions))
+	asdf global elixir $(firstword $(elixir_versions))
+	asdf global erlang $(firstword $(erlang_versions))
+	asdf global golang $(firstword $(golang_versions))
+	asdf global nodejs $(firstword $(nodejs_versions))
+	asdf global ruby $(firstword $(ruby_versions))
 
 plugins:
 	-asdf plugin-add clojure         https://github.com/halcyon/asdf-clojure.git
