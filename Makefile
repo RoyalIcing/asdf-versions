@@ -4,7 +4,8 @@ GOLANG_VERSION := 1.12.5
 NODEJS_VERSION := 12.3.1
 RUBY_VERSION := 2.6.3
 
-default: list
+default:
+	@make -j 10 list
 
 list_elixir:
 	@asdf list-all elixir | tail -n 3 | sed -e 's/^/elixir /'
@@ -19,7 +20,7 @@ list_nodejs:
 	@asdf list-all nodejs | tail -n 3 | sed -e 's/^/nodejs /'
 
 list_ruby:
-	@asdf list-all ruby | grep -e '^\d' | tail -n 6 | sed -e 's/^/ruby /'
+	@asdf list-all ruby 2>/dev/null | grep -e '^\d' | tail -n 6 | sed -e 's/^/ruby /'
 
 list: list_elixir list_erlang list_golang list_nodejs list_ruby
 
