@@ -45,7 +45,7 @@ golang 1.12.5
 make -j 10 install
 ```
 
-## Change globals to latest
+## Change globals to first specified
 
 ```
 make set_globals
