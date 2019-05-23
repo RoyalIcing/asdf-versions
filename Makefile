@@ -4,7 +4,7 @@ GOLANG_VERSION := 1.12.5
 NODEJS_VERSION := 12.3.1
 RUBY_VERSION := 2.6.3
 
-all: elixir
+default: list
 
 list_elixir:
 	@asdf list-all elixir | tail -n 3 | sed -e 's/^/elixir /'
