@@ -2,7 +2,7 @@ ELIXIR_VERSION := 1.8.2
 ERLANG_VERSION := 22.0.1
 GOLANG_VERSION := 1.12.5
 NODEJS_VERSION := 12.3.1
-RUBY_VERSION := 2.6.3
+RUBY_VERSIONS := 2.6.3 2.5.5
 
 default:
 	@make -j 10 list
@@ -20,7 +20,7 @@ list_nodejs:
 	@asdf list-all nodejs | tail -n 3 | sed -e 's/^/nodejs /'
 
 list_ruby:
-	@asdf list-all ruby 2>/dev/null | grep -e '^\d' | tail -n 6 | sed -e 's/^/ruby /'
+	@asdf list-all ruby 2>/dev/null | grep -e '^\d\.\d\.\d$$' | tail -n 6 | sed -e 's/^/ruby /'
 
 list: list_elixir list_erlang list_golang list_nodejs list_ruby
 
@@ -39,7 +39,7 @@ install_nodejs:
 	asdf install nodejs $(NODEJS_VERSION)
 
 install_ruby:
-	asdf install ruby $(RUBY_VERSION)
+	$(foreach ruby_version,$(RUBY_VERSIONS),$(shell asdf install ruby $(ruby_version)))
 
 set_globals:
 	asdf global elixir $(ELIXIR_VERSION)
