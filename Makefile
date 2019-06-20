@@ -1,7 +1,7 @@
 elixir_versions := 1.8.2
-erlang_versions := 22.0.1
-golang_versions := 1.12.5
-nodejs_versions := 12.3.1
+erlang_versions := 22.0.4
+golang_versions := 1.12.6
+nodejs_versions := 12.4.0
 ruby_versions := 2.6.3 2.5.5
 
 default:
