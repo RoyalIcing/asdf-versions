@@ -3,6 +3,7 @@ erlang_versions := 22.0.4
 golang_versions := 1.12.6
 nodejs_versions := 12.4.0
 ruby_versions := 2.6.3 2.5.5
+rust_versions := 1.35.0
 
 default:
 	@make -j 10 list
@@ -22,9 +23,12 @@ list_nodejs:
 list_ruby:
 	@asdf list-all ruby 2>/dev/null | grep -e '^\d\.\d\.\d$$' | tail -n 6 | sed -e 's/^/ruby /'
 
-list: list_elixir list_erlang list_golang list_nodejs list_ruby
+list_rust:
+	@asdf list-all rust | tail -n 3 | sed -e 's/^/rust /'
 
-install: install_elixir install_erlang install_golang install_nodejs install_ruby
+list: list_elixir list_erlang list_golang list_nodejs list_ruby list_rust
+
+install: install_elixir install_erlang install_golang install_nodejs install_ruby install_rust
 
 install_elixir:
 	$(foreach elixir_version,$(elixir_versions),asdf install elixir $(elixir_version))
@@ -41,12 +45,16 @@ install_nodejs:
 install_ruby:
 	$(foreach ruby_version,$(ruby_versions),asdf install ruby $(ruby_version))
 
+install_rust:
+	$(foreach rust_version,$(rust_versions),asdf install rust $(rust_version))
+
 set_globals:
 	asdf global elixir $(firstword $(elixir_versions))
 	asdf global erlang $(firstword $(erlang_versions))
 	asdf global golang $(firstword $(golang_versions))
 	asdf global nodejs $(firstword $(nodejs_versions))
 	asdf global ruby $(firstword $(ruby_versions))
+	asdf global rust $(firstword $(rust_versions))
 
 plugins:
 	-asdf plugin-add clojure         https://github.com/halcyon/asdf-clojure.git
@@ -63,4 +71,5 @@ plugins:
 	-asdf plugin-add postgres        https://github.com/smashedtoatoms/asdf-postgres
 	-asdf plugin-add rebar           https://github.com/Stratus3D/asdf-rebar
 	-asdf plugin-add ruby            https://github.com/asdf-vm/asdf-ruby
+	-asdf plugin-add rust            https://github.com/code-lever/asdf-rust.git
 	asdf plugin-update --all
