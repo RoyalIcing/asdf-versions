@@ -1,7 +1,7 @@
 elixir_versions := 1.8.2
 erlang_versions := 22.0.4
 golang_versions := 1.12.6
-nodejs_versions := 12.4.0
+nodejs_versions := 12.4.0 10.15.3
 ruby_versions := 2.6.3 2.5.5
 rust_versions := 1.35.0
 
@@ -31,22 +31,22 @@ list: list_elixir list_erlang list_golang list_nodejs list_ruby list_rust
 install: install_elixir install_erlang install_golang install_nodejs install_ruby install_rust
 
 install_elixir:
-	$(foreach elixir_version,$(elixir_versions),asdf install elixir $(elixir_version))
+	$(foreach elixir_version,$(elixir_versions),$(shell asdf install elixir $(elixir_version)))
 
 install_erlang:
-	$(foreach erlang_version,$(erlang_versions),asdf install erlang $(erlang_version))
+	$(foreach erlang_version,$(erlang_versions),$(shell asdf install erlang $(erlang_version)))
 
 install_golang:
-	$(foreach golang_version,$(golang_versions),asdf install golang $(golang_version))
+	$(foreach golang_version,$(golang_versions),$(shell asdf install golang $(golang_version)))
 
 install_nodejs:
-	$(foreach nodejs_version,$(nodejs_versions),asdf install nodejs $(nodejs_version))
+	$(foreach nodejs_version,$(nodejs_versions),$(shell asdf install nodejs $(nodejs_version)))
 
 install_ruby:
-	$(foreach ruby_version,$(ruby_versions),asdf install ruby $(ruby_version))
+	$(foreach ruby_version,$(ruby_versions),$(shell asdf install ruby $(ruby_version)))
 
 install_rust:
-	$(foreach rust_version,$(rust_versions),asdf install rust $(rust_version))
+	$(foreach rust_version,$(rust_versions),$(shell asdf install rust $(rust_version)))
 
 set_globals:
 	asdf global elixir $(firstword $(elixir_versions))
