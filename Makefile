@@ -2,6 +2,7 @@ elixir_versions := 1.8.2
 erlang_versions := 22.0.4
 golang_versions := 1.12.6
 nodejs_versions := 12.4.0 10.15.3
+python_versions := 3.7.3
 ruby_versions := 2.6.3 2.5.5
 rust_versions := 1.35.0
 
@@ -20,13 +21,19 @@ list_golang:
 list_nodejs:
 	@asdf list-all nodejs | tail -n 3 | sed -e 's/^/nodejs /'
 
+# Lazy but run once
+all_python_versions = $(eval all_python_versions := $(shell asdf list-all python))$(all_python_versions)
+
+list_python:
+	@echo $(all_python_versions) | tr " " "\n" | grep -e '^3\.' | tail -n 5 | sed -e 's/^/python /'
+
 list_ruby:
 	@asdf list-all ruby 2>/dev/null | grep -e '^\d\.\d\.\d$$' | tail -n 6 | sed -e 's/^/ruby /'
 
 list_rust:
 	@asdf list-all rust | tail -n 3 | sed -e 's/^/rust /'
 
-list: list_elixir list_erlang list_golang list_nodejs list_ruby list_rust
+list: list_elixir list_erlang list_golang list_nodejs list_python list_ruby list_rust
 
 install: install_elixir install_erlang install_golang install_nodejs install_ruby install_rust
 
@@ -41,6 +48,9 @@ install_golang:
 
 install_nodejs:
 	$(foreach nodejs_version,$(nodejs_versions),$(shell asdf install nodejs $(nodejs_version)))
+
+install_python:
+	$(foreach python_version,$(python_versions),$(shell asdf install python $(python_version)))
 
 install_ruby:
 	$(foreach ruby_version,$(ruby_versions),$(shell asdf install ruby $(ruby_version)))
@@ -69,6 +79,7 @@ plugins:
 	-asdf plugin-add nodejs          https://github.com/asdf-vm/asdf-nodejs.git
 	-asdf plugin-add ocaml           https://github.com/vic/asdf-ocaml.git
 	-asdf plugin-add postgres        https://github.com/smashedtoatoms/asdf-postgres
+	-asdf plugin-add python          https://github.com/danhper/asdf-python.git
 	-asdf plugin-add rebar           https://github.com/Stratus3D/asdf-rebar
 	-asdf plugin-add ruby            https://github.com/asdf-vm/asdf-ruby
 	-asdf plugin-add rust            https://github.com/code-lever/asdf-rust.git
