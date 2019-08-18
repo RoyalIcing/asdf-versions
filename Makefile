@@ -1,10 +1,11 @@
-elixir_versions := 1.8.2
-erlang_versions := 22.0.4
-golang_versions := 1.12.6
-nodejs_versions := 12.4.0 10.15.3
-python_versions := 3.7.3
+elixir_versions := 1.8.2 1.9.1
+erlang_versions := 22.0.7
+golang_versions := 1.12.9
+nodejs_versions := 12.8.1 10.15.3
+python_versions := 3.7.4
 ruby_versions := 2.6.3 2.5.5
-rust_versions := 1.35.0
+rust_versions := 1.35.0 1.37.0
+terraform_versions := 0.11.14 0.12.6
 
 default:
 	@make -j 10 list
@@ -23,7 +24,6 @@ list_nodejs:
 
 # Lazy but run once
 all_python_versions = $(eval all_python_versions := $(shell asdf list-all python))$(all_python_versions)
-
 list_python:
 	@echo $(all_python_versions) | tr " " "\n" | grep -e '^3\.' | tail -n 5 | sed -e 's/^/python /'
 
@@ -33,30 +33,32 @@ list_ruby:
 list_rust:
 	@asdf list-all rust | tail -n 3 | sed -e 's/^/rust /'
 
-list: list_elixir list_erlang list_golang list_nodejs list_python list_ruby list_rust
+# Lazy but run once
+all_terraform_versions = $(eval all_terraform_versions := $(shell asdf list-all terraform))$(all_terraform_versions)
+list_terraform:
+	@echo $(all_terraform_versions) | tr " " "\n" | grep -e '^0\.11\.' | tail -n 1 | sed -e 's/^/terraform /'
+	@echo $(all_terraform_versions) | tr " " "\n" | grep -e '^0\.12\.' | tail -n 3 | sed -e 's/^/terraform /'
 
-install: install_elixir install_erlang install_golang install_nodejs install_ruby install_rust
+list: list_elixir list_erlang list_golang list_nodejs list_python list_ruby list_rust list_terraform
 
-install_elixir:
-	$(foreach elixir_version,$(elixir_versions),$(shell asdf install elixir $(elixir_version)))
+all_versions := $(foreach erlang_version,$(erlang_versions),erlang_$(erlang_version))
+all_versions := $(foreach elixir_version,$(elixir_versions),elixir_$(elixir_version))
+all_versions += $(foreach nodejs_version,$(nodejs_versions),nodejs_$(nodejs_version))
+all_versions += $(foreach golang_version,$(golang_versions),golang_$(golang_version))
+all_versions += $(foreach python_version,$(python_versions),python_$(python_version))
+all_versions += $(foreach ruby_version,$(ruby_versions),ruby_$(ruby_version))
+all_versions += $(foreach rust_version,$(rust_versions),rust_$(rust_version))
+all_versions += $(foreach terraform_version,$(terraform_versions),terraform_$(terraform_version))
+list_versions:
+	echo $(all_versions)
 
-install_erlang:
-	$(foreach erlang_version,$(erlang_versions),$(shell asdf install erlang $(erlang_version)))
+$(foreach full,$(all_versions),$(full)):
+	asdf install $(subst _, ,$@)
 
-install_golang:
-	$(foreach golang_version,$(golang_versions),$(shell asdf install golang $(golang_version)))
+elixir: $(foreach elixir_version,$(elixir_versions),elixir_$(elixir_version))
+python: $(foreach python_version,$(python_versions),python_$(python_version))
 
-install_nodejs:
-	$(foreach nodejs_version,$(nodejs_versions),$(shell asdf install nodejs $(nodejs_version)))
-
-install_python:
-	$(foreach python_version,$(python_versions),$(shell asdf install python $(python_version)))
-
-install_ruby:
-	$(foreach ruby_version,$(ruby_versions),$(shell asdf install ruby $(ruby_version)))
-
-install_rust:
-	$(foreach rust_version,$(rust_versions),$(shell asdf install rust $(rust_version)))
+install: $(foreach full,$(all_versions),$(full))
 
 set_globals:
 	asdf global elixir $(firstword $(elixir_versions))
@@ -83,4 +85,8 @@ plugins:
 	-asdf plugin-add rebar           https://github.com/Stratus3D/asdf-rebar
 	-asdf plugin-add ruby            https://github.com/asdf-vm/asdf-ruby
 	-asdf plugin-add rust            https://github.com/code-lever/asdf-rust.git
+	-asdf plugin-add consul          https://github.com/Banno/asdf-hashicorp.git
+	-asdf plugin-add packer          https://github.com/Banno/asdf-hashicorp.git
+	-asdf plugin-add terraform       https://github.com/Banno/asdf-hashicorp.git
+	-asdf plugin-add vault           https://github.com/Banno/asdf-hashicorp.git
 	asdf plugin-update --all
