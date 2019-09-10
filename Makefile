@@ -5,7 +5,7 @@ nodejs_versions := 12.8.1 10.15.3
 python_versions := 3.7.4
 ruby_versions := 2.6.3 2.5.5
 rust_versions := 1.35.0 1.37.0
-terraform_versions := 0.11.14 0.12.6
+terraform_versions := 0.11.14 0.12.8
 
 default:
 	@make -j 10 list
