@@ -3,6 +3,7 @@ erlang_versions := 22.0.7
 golang_versions := 1.12.9
 nodejs_versions := 12.8.1 10.15.3
 python_versions := 3.7.4
+redis_versions := 5.0.5
 ruby_versions := 2.6.3 2.5.5
 rust_versions := 1.35.0 1.37.0
 terraform_versions := 0.11.14 0.12.8
@@ -27,6 +28,9 @@ all_python_versions = $(eval all_python_versions := $(shell asdf list-all python
 list_python:
 	@echo $(all_python_versions) | tr " " "\n" | grep -e '^3\.' | tail -n 5 | sed -e 's/^/python /'
 
+list_redis:
+	@asdf list-all redis | tail -n 3 | sed -e 's/^/redis /'
+
 list_ruby:
 	@asdf list-all ruby 2>/dev/null | grep -e '^\d\.\d\.\d$$' | tail -n 6 | sed -e 's/^/ruby /'
 
@@ -39,13 +43,14 @@ list_terraform:
 	@echo $(all_terraform_versions) | tr " " "\n" | grep -e '^0\.11\.' | tail -n 1 | sed -e 's/^/terraform /'
 	@echo $(all_terraform_versions) | tr " " "\n" | grep -e '^0\.12\.' | tail -n 3 | sed -e 's/^/terraform /'
 
-list: list_elixir list_erlang list_golang list_nodejs list_python list_ruby list_rust list_terraform
+list: list_elixir list_erlang list_golang list_nodejs list_python list_redis list_ruby list_rust list_terraform
 
 all_versions := $(foreach erlang_version,$(erlang_versions),erlang_$(erlang_version))
 all_versions := $(foreach elixir_version,$(elixir_versions),elixir_$(elixir_version))
 all_versions += $(foreach nodejs_version,$(nodejs_versions),nodejs_$(nodejs_version))
 all_versions += $(foreach golang_version,$(golang_versions),golang_$(golang_version))
 all_versions += $(foreach python_version,$(python_versions),python_$(python_version))
+all_versions += $(foreach redis_version,$(redis_versions),redis_$(redis_version))
 all_versions += $(foreach ruby_version,$(ruby_versions),ruby_$(ruby_version))
 all_versions += $(foreach rust_version,$(rust_versions),rust_$(rust_version))
 all_versions += $(foreach terraform_version,$(terraform_versions),terraform_$(terraform_version))
@@ -83,6 +88,7 @@ plugins:
 	-asdf plugin-add postgres        https://github.com/smashedtoatoms/asdf-postgres
 	-asdf plugin-add python          https://github.com/danhper/asdf-python.git
 	-asdf plugin-add rebar           https://github.com/Stratus3D/asdf-rebar
+	-asdf plugin-add redis           https://github.com/smashedtoatoms/asdf-redis.git
 	-asdf plugin-add ruby            https://github.com/asdf-vm/asdf-ruby
 	-asdf plugin-add rust            https://github.com/code-lever/asdf-rust.git
 	-asdf plugin-add consul          https://github.com/Banno/asdf-hashicorp.git
