@@ -1,12 +1,12 @@
 elixir_versions := 1.8.2 1.9.1
-erlang_versions := 22.0.7
-golang_versions := 1.12.9
+erlang_versions := 22.1
+golang_versions := 1.13.1 1.12.10
 nodejs_versions := 12.8.1 10.15.3
 python_versions := 3.7.4 2.7.16
 redis_versions := 5.0.5
 ruby_versions := 2.6.3 2.5.5
-rust_versions := 1.35.0 1.37.0
-terraform_versions := 0.11.14 0.12.8
+rust_versions := 1.37.0 1.35.0
+terraform_versions := 0.12.10 0.11.14
 
 default:
 	@make -j 10 list
@@ -46,7 +46,7 @@ list_terraform:
 list: list_elixir list_erlang list_golang list_nodejs list_python list_redis list_ruby list_rust list_terraform
 
 all_versions := $(foreach erlang_version,$(erlang_versions),erlang_$(erlang_version))
-all_versions := $(foreach elixir_version,$(elixir_versions),elixir_$(elixir_version))
+all_versions += $(foreach elixir_version,$(elixir_versions),elixir_$(elixir_version))
 all_versions += $(foreach nodejs_version,$(nodejs_versions),nodejs_$(nodejs_version))
 all_versions += $(foreach golang_version,$(golang_versions),golang_$(golang_version))
 all_versions += $(foreach python_version,$(python_versions),python_$(python_version))
@@ -70,6 +70,7 @@ set_globals:
 	asdf global erlang $(firstword $(erlang_versions))
 	asdf global golang $(firstword $(golang_versions))
 	asdf global nodejs $(firstword $(nodejs_versions))
+	asdf global python $(firstword $(python_versions))
 	asdf global ruby $(firstword $(ruby_versions))
 	asdf global rust $(firstword $(rust_versions))
 
