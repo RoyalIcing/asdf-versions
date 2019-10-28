@@ -1,11 +1,11 @@
 elixir_versions := 1.8.2 1.9.1
 erlang_versions := 22.1
-golang_versions := 1.13.1 1.12.10
+golang_versions := 1.13.3 1.12.10
 nodejs_versions := 12.8.1 10.15.3
 python_versions := 3.7.4 2.7.16
 redis_versions := 5.0.5
-ruby_versions := 2.6.3 2.5.5
-rust_versions := 1.37.0 1.35.0
+ruby_versions := 2.6.5 2.5.5
+rust_versions := 1.38.0 1.35.0
 terraform_versions := 0.12.10 0.11.14
 
 default:
