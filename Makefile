@@ -1,41 +1,62 @@
-elixir_versions := 1.8.2 1.9.1
-erlang_versions := 22.1
-golang_versions := 1.13.3 1.12.10
-nodejs_versions := 12.8.1 10.15.3
+erlang_versions := 22.2.6
+elixir_versions := 1.8.2 1.9.4
+golang_versions := 1.13.7 1.12.10
+nodejs_versions := 12.15.0 10.15.3
 python_versions := 3.7.4 2.7.16
 redis_versions := 5.0.5
 ruby_versions := 2.6.5 2.5.5
-rust_versions := 1.38.0 1.35.0
-terraform_versions := 0.12.10 0.11.14
+rust_versions := 1.41.0 1.35.0
+terraform_versions := 0.12.16 0.11.14
 
-default:
+SPACE := $() $()
+ERROR_COLOR=\x1b[31;01m
+SUCCESS_COLOR=\x1b[32;01m
+NO_COLOR=\x1b[0m
+
+fn_version_regex = $(subst $(SPACE),|,$(subst .,\.,$(1)))
+
+default: plugins
 	@make -j 10 list
 
-list_elixir:
-	@asdf list-all elixir | tail -n 3 | sed -e 's/^/elixir /'
+# Define tasks such as golang_1.13.5
+$(foreach task,$(all_versions),$(task)):
+	asdf install $(subst _, ,$@)
 
-list_erlang:
-	@asdf list-all erlang | tail -n 3 | sed -e 's/^/erlang /'
+define fn_list_named
+	@echo "=> $(1) $($(1)_versions)"
+	@asdf list-all $(1) | grep -E '^\d+\.\d+\.\d+' | sed -e 's/^/   $(1) /' | grep --invert-match -E "$(call fn_version_regex,$($(1)_versions))" | tail -n 5
+endef
 
-list_golang:
-	@asdf list-all golang | tail -n 3 | sed -e 's/^/golang /'
+names := elixir erlang golang nodejs python redis ruby rust
 
-list_nodejs:
-	@asdf list-all nodejs | tail -n 3 | sed -e 's/^/nodejs /'
+$(foreach name,$(names),$(name)):
+	$(call fn_list_named,$@)
 
-# Lazy but run once
-all_python_versions = $(eval all_python_versions := $(shell asdf list-all python))$(all_python_versions)
-list_python:
-	@echo $(all_python_versions) | tr " " "\n" | grep -e '^3\.' | tail -n 5 | sed -e 's/^/python /'
+# list_elixir:
+# 	$(call fn_list_named,elixir)
 
-list_redis:
-	@asdf list-all redis | tail -n 3 | sed -e 's/^/redis /'
+# list_erlang:
+# 	$(call fn_list_named,erlang)
 
-list_ruby:
-	@asdf list-all ruby 2>/dev/null | grep -e '^\d\.\d\.\d$$' | tail -n 6 | sed -e 's/^/ruby /'
+# list_golang:
+# 	@asdf list-all golang | tail -n 3 | sed -e 's/^/golang /'
 
-list_rust:
-	@asdf list-all rust | tail -n 3 | sed -e 's/^/rust /'
+# list_nodejs:
+# 	@asdf list-all nodejs | tail -n 3 | sed -e 's/^/nodejs /'
+
+# # Lazy but run once
+# all_python_versions = $(eval all_python_versions := $(shell asdf list-all python))$(all_python_versions)
+# list_python:
+# 	@echo $(all_python_versions) | tr " " "\n" | grep -e '^3\.' | tail -n 5 | sed -e 's/^/python /'
+
+# list_redis:
+# 	@asdf list-all redis | tail -n 3 | sed -e 's/^/redis /'
+
+# list_ruby:
+# 	@asdf list-all ruby 2>/dev/null | grep -e '^\d\.\d\.\d$$' | tail -n 6 | sed -e 's/^/ruby /'
+
+# list_rust:
+# 	@asdf list-all rust | tail -n 3 | sed -e 's/^/rust /'
 
 # Lazy but run once
 all_terraform_versions = $(eval all_terraform_versions := $(shell asdf list-all terraform))$(all_terraform_versions)
@@ -55,15 +76,15 @@ all_versions += $(foreach ruby_version,$(ruby_versions),ruby_$(ruby_version))
 all_versions += $(foreach rust_version,$(rust_versions),rust_$(rust_version))
 all_versions += $(foreach terraform_version,$(terraform_versions),terraform_$(terraform_version))
 list_versions:
-	echo $(all_versions)
+	@echo $(all_versions) | sed "y/ /\n/"
 
-$(foreach full,$(all_versions),$(full)):
+status:
+
+# Define tasks such as golang_1.13.5
+$(foreach task,$(all_versions),$(task)):
 	asdf install $(subst _, ,$@)
 
-elixir: $(foreach elixir_version,$(elixir_versions),elixir_$(elixir_version))
-python: $(foreach python_version,$(python_versions),python_$(python_version))
-
-install: $(foreach full,$(all_versions),$(full))
+install: $(all_versions)
 
 set_globals:
 	asdf global elixir $(firstword $(elixir_versions))
@@ -75,25 +96,25 @@ set_globals:
 	asdf global rust $(firstword $(rust_versions))
 
 plugins:
-	-asdf plugin-add clojure         https://github.com/halcyon/asdf-clojure.git
-	-asdf plugin-add crystal         https://github.com/marciogm/asdf-crystal.git
-	-asdf plugin-add dep             https://github.com/paxosglobal/asdf-dep
-	-asdf plugin-add elixir          https://github.com/asdf-vm/asdf-elixir
-	-asdf plugin-add elm             https://github.com/vic/asdf-elm.git
-	-asdf plugin-add erlang          https://github.com/asdf-vm/asdf-erlang.git
-	-asdf plugin-add golang          https://github.com/kennyp/asdf-golang.git
-	-asdf plugin-add haskell         https://github.com/vic/asdf-haskell.git
-	-asdf plugin-add java            https://github.com/skotchpine/asdf-java.git
-	-asdf plugin-add nodejs          https://github.com/asdf-vm/asdf-nodejs.git
-	-asdf plugin-add ocaml           https://github.com/vic/asdf-ocaml.git
-	-asdf plugin-add postgres        https://github.com/smashedtoatoms/asdf-postgres
-	-asdf plugin-add python          https://github.com/danhper/asdf-python.git
-	-asdf plugin-add rebar           https://github.com/Stratus3D/asdf-rebar
-	-asdf plugin-add redis           https://github.com/smashedtoatoms/asdf-redis.git
-	-asdf plugin-add ruby            https://github.com/asdf-vm/asdf-ruby
-	-asdf plugin-add rust            https://github.com/code-lever/asdf-rust.git
-	-asdf plugin-add consul          https://github.com/Banno/asdf-hashicorp.git
-	-asdf plugin-add packer          https://github.com/Banno/asdf-hashicorp.git
-	-asdf plugin-add terraform       https://github.com/Banno/asdf-hashicorp.git
-	-asdf plugin-add vault           https://github.com/Banno/asdf-hashicorp.git
-	asdf plugin-update --all
+	@-asdf plugin-add clojure         https://github.com/halcyon/asdf-clojure.git         || true
+	@-asdf plugin-add crystal         https://github.com/marciogm/asdf-crystal.git        || true
+	@-asdf plugin-add dep             https://github.com/paxosglobal/asdf-dep             || true
+	@-asdf plugin-add elixir          https://github.com/asdf-vm/asdf-elixir              || true
+	@-asdf plugin-add elm             https://github.com/vic/asdf-elm.git                 || true
+	@-asdf plugin-add erlang          https://github.com/asdf-vm/asdf-erlang.git          || true
+	@-asdf plugin-add golang          https://github.com/kennyp/asdf-golang.git           || true
+	@-asdf plugin-add haskell         https://github.com/vic/asdf-haskell.git             || true
+	@-asdf plugin-add java            https://github.com/skotchpine/asdf-java.git         || true
+	@-asdf plugin-add nodejs          https://github.com/asdf-vm/asdf-nodejs.git          || true
+	@-asdf plugin-add ocaml           https://github.com/vic/asdf-ocaml.git               || true
+	@-asdf plugin-add postgres        https://github.com/smashedtoatoms/asdf-postgres     || true
+	@-asdf plugin-add python          https://github.com/danhper/asdf-python.git          || true
+	@-asdf plugin-add rebar           https://github.com/Stratus3D/asdf-rebar             || true
+	@-asdf plugin-add redis           https://github.com/smashedtoatoms/asdf-redis.git    || true
+	@-asdf plugin-add ruby            https://github.com/asdf-vm/asdf-ruby                || true
+	@-asdf plugin-add rust            https://github.com/code-lever/asdf-rust.git         || true
+	@-asdf plugin-add consul          https://github.com/Banno/asdf-hashicorp.git         || true
+	@-asdf plugin-add packer          https://github.com/Banno/asdf-hashicorp.git         || true
+	@-asdf plugin-add terraform       https://github.com/Banno/asdf-hashicorp.git         || true
+	@-asdf plugin-add vault           https://github.com/Banno/asdf-hashicorp.git         || true
+	@asdf plugin-update --all          >/dev/null
