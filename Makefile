@@ -5,7 +5,7 @@ nodejs_versions := 12.15.0 10.15.3
 python_versions := 3.8.1 2.7.16
 redis_versions := 5.0.5
 ruby_versions := 2.6.5 2.7.0
-rust_versions := 1.41.0 1.35.0
+rust_versions := 1.41.0
 terraform_versions := 0.12.20 0.11.14
 
 SPACE := $() $()
