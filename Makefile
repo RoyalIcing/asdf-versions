@@ -22,9 +22,11 @@ default: plugins
 $(foreach task,$(all_versions),$(task)):
 	asdf install $(subst _, ,$@)
 
+LIMIT ?= 5
+
 define fn_list_named
 	@echo "=> $(1) $($(1)_versions)"
-	@asdf list-all $(1) | grep -E '^\d+\.\d+\.\d+' | sed -e 's/^/   $(1) /' | tail -n 5
+	@asdf list-all $(1) | grep -E '^\d+\.\d+\.\d+' | sed -e 's/^/   $(1) /' | tail -n $(LIMIT)
 endef
 
 names := elixir erlang golang nodejs python redis ruby rust terraform
