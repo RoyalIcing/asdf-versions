@@ -3,9 +3,9 @@
 Versions are specified at the top of the provided Makefile. You can specify multiple versions of a package by listing them separated by a space
 
 ```
-elixir_versions := 1.8.2
-erlang_versions := 22.0.1
-golang_versions := 1.12.5
+elixir_versions := 1.10.1-otp-22 1.8.2
+erlang_versions := 22.2.6
+golang_versions := 1.13.8 1.12.10
 nodejs_versions := 12.3.1
 ruby_versions := 2.6.3 2.5.5
 …
