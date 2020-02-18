@@ -34,32 +34,6 @@ names := elixir erlang golang nodejs python redis ruby rust terraform
 $(foreach name,$(names),$(name)):
 	$(call fn_list_named,$@)
 
-# list_elixir:
-# 	$(call fn_list_named,elixir)
-
-# list_erlang:
-# 	$(call fn_list_named,erlang)
-
-# list_golang:
-# 	@asdf list-all golang | tail -n 3 | sed -e 's/^/golang /'
-
-# list_nodejs:
-# 	@asdf list-all nodejs | tail -n 3 | sed -e 's/^/nodejs /'
-
-# # Lazy but run once
-# all_python_versions = $(eval all_python_versions := $(shell asdf list-all python))$(all_python_versions)
-# list_python:
-# 	@echo $(all_python_versions) | tr " " "\n" | grep -e '^3\.' | tail -n 5 | sed -e 's/^/python /'
-
-# list_redis:
-# 	@asdf list-all redis | tail -n 3 | sed -e 's/^/redis /'
-
-# list_ruby:
-# 	@asdf list-all ruby 2>/dev/null | grep -e '^\d\.\d\.\d$$' | tail -n 6 | sed -e 's/^/ruby /'
-
-# list_rust:
-# 	@asdf list-all rust | tail -n 3 | sed -e 's/^/rust /'
-
 # Lazy but run once
 all_terraform_versions = $(eval all_terraform_versions := $(shell asdf list-all terraform))$(all_terraform_versions)
 list_terraform:
