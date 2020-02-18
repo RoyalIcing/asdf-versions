@@ -24,7 +24,7 @@ $(foreach task,$(all_versions),$(task)):
 
 define fn_list_named
 	@echo "=> $(1) $($(1)_versions)"
-	@asdf list-all $(1) | grep -E '^\d+\.\d+\.\d+' | sed -e 's/^/   $(1) /' | grep --invert-match -E "$(call fn_version_regex,$($(1)_versions))" | tail -n 5
+	@asdf list-all $(1) | grep -E '^\d+\.\d+\.\d+' | sed -e 's/^/   $(1) /' | tail -n 5
 endef
 
 names := elixir erlang golang nodejs python redis ruby rust terraform
