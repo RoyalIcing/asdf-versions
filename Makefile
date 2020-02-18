@@ -55,8 +55,6 @@ all_versions += $(foreach terraform_version,$(terraform_versions),terraform_$(te
 list_versions:
 	@echo $(all_versions) | sed "y/ /\n/"
 
-status:
-
 # Define tasks such as golang_1.13.5
 $(foreach task,$(all_versions),$(task)):
 	asdf install $(subst _, ,$@)
