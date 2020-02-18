@@ -6,7 +6,7 @@ python_versions := 3.8.1 2.7.16
 redis_versions := 5.0.5
 ruby_versions := 2.6.5 2.5.5
 rust_versions := 1.41.0 1.35.0
-terraform_versions := 0.12.16 0.11.14
+terraform_versions := 0.12.20 0.11.14
 
 SPACE := $() $()
 ERROR_COLOR=\x1b[31;01m
@@ -27,7 +27,7 @@ define fn_list_named
 	@asdf list-all $(1) | grep -E '^\d+\.\d+\.\d+' | sed -e 's/^/   $(1) /' | grep --invert-match -E "$(call fn_version_regex,$($(1)_versions))" | tail -n 5
 endef
 
-names := elixir erlang golang nodejs python redis ruby rust
+names := elixir erlang golang nodejs python redis ruby rust terraform
 
 $(foreach name,$(names),$(name)):
 	$(call fn_list_named,$@)
@@ -64,7 +64,8 @@ list_terraform:
 	@echo $(all_terraform_versions) | tr " " "\n" | grep -e '^0\.11\.' | tail -n 1 | sed -e 's/^/terraform /'
 	@echo $(all_terraform_versions) | tr " " "\n" | grep -e '^0\.12\.' | tail -n 3 | sed -e 's/^/terraform /'
 
-list: list_elixir list_erlang list_golang list_nodejs list_python list_redis list_ruby list_rust list_terraform
+list:
+	@make -j 10 $(names)
 
 all_versions := $(foreach erlang_version,$(erlang_versions),erlang_$(erlang_version))
 all_versions += $(foreach elixir_version,$(elixir_versions),elixir_$(elixir_version))
