@@ -1,12 +1,13 @@
-erlang_versions := 22.2.6
+erlang_versions := 22.2.7
 elixir_versions := 1.10.1-otp-22 1.8.2 1.9.4
 golang_versions := 1.13.8 1.12.10
 nodejs_versions := 12.15.0 10.15.3
 python_versions := 3.8.1 2.7.16
-redis_versions := 5.0.5
+redis_versions := 5.0.7
 ruby_versions := 2.6.5 2.7.0
 rust_versions := 1.41.0
 terraform_versions := 0.12.20 0.11.14
+v_versions := 0.1.24
 
 SPACE := $() $()
 ERROR_COLOR=\x1b[31;01m
@@ -29,7 +30,7 @@ define fn_list_named
 	@asdf list-all $(1) | grep -E '^\d+\.\d+\.\d+' | sed -e 's/^/   $(1) /' | tail -n $(LIMIT)
 endef
 
-names := elixir erlang golang nodejs python redis ruby rust terraform
+names := elixir erlang golang nodejs python redis ruby rust terraform v
 
 $(foreach name,$(names),$(name)):
 	$(call fn_list_named,$@)
@@ -52,6 +53,7 @@ all_versions += $(foreach redis_version,$(redis_versions),redis_$(redis_version)
 all_versions += $(foreach ruby_version,$(ruby_versions),ruby_$(ruby_version))
 all_versions += $(foreach rust_version,$(rust_versions),rust_$(rust_version))
 all_versions += $(foreach terraform_version,$(terraform_versions),terraform_$(terraform_version))
+all_versions += $(foreach v_version,$(v_versions),v_$(v_version))
 list_versions:
 	@echo $(all_versions) | sed "y/ /\n/"
 
@@ -69,6 +71,7 @@ set_globals:
 	asdf global python $(firstword $(python_versions))
 	asdf global ruby $(firstword $(ruby_versions))
 	asdf global rust $(firstword $(rust_versions))
+	asdf global v $(firstword $(v_versions))
 
 plugins:
 	@-asdf plugin-add clojure         https://github.com/halcyon/asdf-clojure.git         || true
@@ -92,4 +95,5 @@ plugins:
 	@-asdf plugin-add packer          https://github.com/Banno/asdf-hashicorp.git         || true
 	@-asdf plugin-add terraform       https://github.com/Banno/asdf-hashicorp.git         || true
 	@-asdf plugin-add vault           https://github.com/Banno/asdf-hashicorp.git         || true
+	@-asdf plugin-add v
 	@asdf plugin-update --all          >/dev/null
