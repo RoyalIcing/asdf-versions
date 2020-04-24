@@ -1,12 +1,12 @@
-erlang_versions := 22.2.8
+erlang_versions := 22.3.2
 elixir_versions := 1.10.2-otp-22 1.8.2 1.9.4
-golang_versions := 1.13.8 1.12.10
+golang_versions := 1.13.10 1.14.2 1.12.10
 nodejs_versions := 12.15.0 10.15.3
 python_versions := 3.8.1 2.7.16
-redis_versions := 5.0.7
-ruby_versions := 2.6.5 2.7.0
-rust_versions := 1.42.0
-terraform_versions := 0.12.20 0.11.14
+redis_versions := 5.0.9
+ruby_versions := 2.6.5 2.7.1
+rust_versions := 1.43.0
+terraform_versions := 0.12.24 0.11.14
 v_versions := 0.1.24
 
 SPACE := $() $()
@@ -16,8 +16,7 @@ NO_COLOR=\x1b[0m
 
 fn_version_regex = $(subst $(SPACE),|,$(subst .,\.,$(1)))
 
-default: plugins
-	@make -j 10 list
+default: plugins list
 
 # Define tasks such as golang_1.13.5
 $(foreach task,$(all_versions),$(task)):
@@ -42,6 +41,7 @@ list_terraform:
 	@echo $(all_terraform_versions) | tr " " "\n" | grep -e '^0\.12\.' | tail -n 3 | sed -e 's/^/terraform /'
 
 list:
+	@echo "Installed:"
 	@make -j 10 $(names)
 
 all_versions := $(foreach erlang_version,$(erlang_versions),erlang_$(erlang_version))
@@ -54,7 +54,7 @@ all_versions += $(foreach ruby_version,$(ruby_versions),ruby_$(ruby_version))
 all_versions += $(foreach rust_version,$(rust_versions),rust_$(rust_version))
 all_versions += $(foreach terraform_version,$(terraform_versions),terraform_$(terraform_version))
 all_versions += $(foreach v_version,$(v_versions),v_$(v_version))
-list_versions:
+plan:
 	@echo $(all_versions) | sed "y/ /\n/"
 
 # Define tasks such as golang_1.13.5
