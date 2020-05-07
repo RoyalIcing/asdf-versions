@@ -1,8 +1,8 @@
-erlang_versions := 22.3.2
+erlang_versions := 22.3.3
 elixir_versions := 1.10.2-otp-22 1.8.2 1.9.4
 golang_versions := 1.13.10 1.14.2 1.12.10
 nodejs_versions := 12.15.0 10.15.3
-python_versions := 3.8.1 2.7.16
+python_versions := 3.8.2 2.7.16
 redis_versions := 5.0.9
 ruby_versions := 2.6.5 2.7.1
 rust_versions := 1.43.0
