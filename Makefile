@@ -1,7 +1,8 @@
-erlang_versions := 22.3.3
+erlang_versions := 22.3.4
 elixir_versions := 1.10.2-otp-22 1.8.2 1.9.4
 golang_versions := 1.13.10 1.14.2 1.12.10
 nodejs_versions := 12.15.0 10.15.3
+deno_versions := 1.0.0
 python_versions := 3.8.2 2.7.16
 redis_versions := 5.0.9
 ruby_versions := 2.6.5 2.7.1
@@ -33,7 +34,7 @@ define fn_list_named
 	@asdf list-all $(1) | grep -E '^\d+\.\d+\.\d+' | sed -e 's/^/   $(1) /' | tail -n $(LIMIT)
 endef
 
-names := elixir erlang golang nodejs python redis ruby rust terraform v
+names := elixir erlang golang nodejs deno python redis ruby rust terraform v
 
 $(foreach name,$(names),$(name)):
 	$(call fn_list_named,$@)
@@ -51,6 +52,7 @@ list:
 all_versions := $(foreach erlang_version,$(erlang_versions),erlang_$(erlang_version))
 all_versions += $(foreach elixir_version,$(elixir_versions),elixir_$(elixir_version))
 all_versions += $(foreach nodejs_version,$(nodejs_versions),nodejs_$(nodejs_version))
+all_versions += $(foreach deno_version,$(deno_versions),deno_$(deno_version))
 all_versions += $(foreach golang_version,$(golang_versions),golang_$(golang_version))
 all_versions += $(foreach python_version,$(python_versions),python_$(python_version))
 all_versions += $(foreach redis_version,$(redis_versions),redis_$(redis_version))
@@ -72,6 +74,7 @@ set_globals:
 	asdf global erlang $(firstword $(erlang_versions))
 	asdf global golang $(firstword $(golang_versions))
 	asdf global nodejs $(firstword $(nodejs_versions))
+	asdf global deno $(firstword $(deno_versions))
 	asdf global python $(firstword $(python_versions))
 	asdf global ruby $(firstword $(ruby_versions))
 	asdf global rust $(firstword $(rust_versions))
@@ -88,6 +91,7 @@ plugins:
 	@-asdf plugin-add haskell         https://github.com/vic/asdf-haskell.git             || true
 	@-asdf plugin-add java            https://github.com/skotchpine/asdf-java.git         || true
 	@-asdf plugin-add nodejs          https://github.com/asdf-vm/asdf-nodejs.git          || true
+	@-asdf plugin-add deno            https://github.com/asdf-community/asdf-deno.git     || true
 	@-asdf plugin-add ocaml           https://github.com/vic/asdf-ocaml.git               || true
 	@-asdf plugin-add postgres        https://github.com/smashedtoatoms/asdf-postgres     || true
 	@-asdf plugin-add python          https://github.com/danhper/asdf-python.git          || true
