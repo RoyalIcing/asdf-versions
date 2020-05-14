@@ -16,7 +16,11 @@ NO_COLOR=\x1b[0m
 
 fn_version_regex = $(subst $(SPACE),|,$(subst .,\.,$(1)))
 
-default: plugins list
+default:
+	git pull --rebase
+	$(MAKE) plugins
+	$(MAKE) -j 10 install
+	$(MAKE) set_globals
 
 # Define tasks such as golang_1.13.5
 $(foreach task,$(all_versions),$(task)):
