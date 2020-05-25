@@ -9,6 +9,7 @@ ruby_versions := 2.6.5 2.7.1
 rust_versions := 1.43.0
 terraform_versions := 0.12.24 0.11.14
 v_versions := 0.1.24
+java_versions := adopt-openjdk-12.0.2+10.3
 
 SPACE := $() $()
 ERROR_COLOR=\x1b[31;01m
@@ -34,7 +35,7 @@ define fn_list_named
 	@asdf list-all $(1) | grep -E '^\d+\.\d+\.\d+' | sed -e 's/^/   $(1) /' | tail -n $(LIMIT)
 endef
 
-names := elixir erlang golang nodejs deno python redis ruby rust terraform v
+names := elixir erlang golang nodejs deno python redis ruby rust terraform v java
 
 $(foreach name,$(names),$(name)):
 	$(call fn_list_named,$@)
@@ -60,6 +61,7 @@ all_versions += $(foreach ruby_version,$(ruby_versions),ruby_$(ruby_version))
 all_versions += $(foreach rust_version,$(rust_versions),rust_$(rust_version))
 all_versions += $(foreach terraform_version,$(terraform_versions),terraform_$(terraform_version))
 all_versions += $(foreach v_version,$(v_versions),v_$(v_version))
+all_versions += $(foreach suffix,$(java_versions),java_$(suffix))
 plan:
 	@echo $(all_versions) | sed "y/ /\n/"
 
@@ -79,6 +81,7 @@ set_globals:
 	asdf global ruby $(firstword $(ruby_versions))
 	asdf global rust $(firstword $(rust_versions))
 	asdf global v $(firstword $(v_versions))
+	asdf global java $(firstword $(java_versions))
 
 plugins:
 	@-asdf plugin-add clojure         https://github.com/halcyon/asdf-clojure.git         || true
