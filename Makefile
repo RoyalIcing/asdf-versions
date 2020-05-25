@@ -11,6 +11,8 @@ terraform_versions := 0.12.24 0.11.14
 v_versions := 0.1.24
 java_versions := adopt-openjdk-12.0.2+10.3
 
+names := elixir erlang golang nodejs deno python redis ruby rust terraform v java
+
 SPACE := $() $()
 ERROR_COLOR=\x1b[31;01m
 SUCCESS_COLOR=\x1b[32;01m
@@ -34,8 +36,6 @@ define fn_list_named
 	@echo "=> $(1) $($(1)_versions)"
 	@asdf list-all $(1) | grep -E '^\d+\.\d+\.\d+' | sed -e 's/^/   $(1) /' | tail -n $(LIMIT)
 endef
-
-names := elixir erlang golang nodejs deno python redis ruby rust terraform v java
 
 $(foreach name,$(names),$(name)):
 	$(call fn_list_named,$@)
