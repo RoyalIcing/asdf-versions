@@ -3,15 +3,17 @@
 Versions are specified at the top of the provided Makefile. You can specify multiple versions of a package by listing them separated by a space
 
 ```
-erlang_versions := 22.2.6
-elixir_versions := 1.10.1-otp-22 1.8.2 1.9.4
-golang_versions := 1.13.8 1.12.10
+erlang_versions := 22.3.4
+elixir_versions := 1.10.2-otp-22 1.8.2 1.9.4
+golang_versions := 1.13.10 1.14.2 1.12.10
 nodejs_versions := 12.15.0 10.15.3
-python_versions := 3.8.1 2.7.16
-redis_versions := 5.0.5
-ruby_versions := 2.6.5 2.7.0
-rust_versions := 1.41.0 1.35.0
-terraform_versions := 0.12.20 0.11.14
+deno_versions := 1.0.0
+python_versions := 3.8.2 2.7.16
+redis_versions := 5.0.9
+ruby_versions := 2.6.5 2.7.1
+rust_versions := 1.43.0
+terraform_versions := 0.12.24 0.11.14
+v_versions := 0.1.24
 …
 ```
 
