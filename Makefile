@@ -1,3 +1,5 @@
+platform := $(shell uname)
+
 erlang_versions := 22.3.4
 elixir_versions := 1.10.2-otp-22 1.8.2 1.9.4
 golang_versions := 1.13.10 1.14.2 1.12.10
@@ -9,7 +11,11 @@ ruby_versions := 2.6.5 2.7.1
 rust_versions := 1.43.0
 terraform_versions := 0.12.24 0.11.14
 v_versions := 0.1.24
+ifeq ($(platform),Darwin)
 java_versions := adopt-openjdk-12.0.2+10.3
+else
+java_versions := openjdk-11.0.1
+endif
 
 names := elixir erlang golang nodejs deno python redis ruby rust terraform v java
 
