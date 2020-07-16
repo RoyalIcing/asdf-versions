@@ -1,13 +1,13 @@
 erlang_versions := 23.0.2 22.3.4
 elixir_versions := 1.10.3-otp-23 1.9.4
 golang_versions := 1.13.12 1.14.4 1.12.10
-nodejs_versions := 12.18.0 10.15.3
+nodejs_versions := 12.18.2 10.15.3
 deno_versions := 1.1.3
 python_versions := 3.8.3 2.7.18
 redis_versions := 5.0.9
 ruby_versions := 2.6.5 2.7.1
-rust_versions := 1.43.0
-terraform_versions := 0.12.24 0.11.14
+rust_versions := 1.44.1
+terraform_versions := 0.12.28 0.11.14
 v_versions := 0.1.24
 java_versions := adopt-openjdk-12.0.2+10.3
 
