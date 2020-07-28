@@ -1,13 +1,13 @@
 erlang_versions := 23.0.2 22.3.4
-elixir_versions := 1.10.3-otp-23 1.9.4
-golang_versions := 1.13.12 1.14.4 1.12.10
+elixir_versions := 1.10.4-otp-23 1.9.4
+golang_versions := 1.13.12 1.14.6 1.12.10
 nodejs_versions := 12.18.3 10.15.3
 deno_versions := 1.2.1
 python_versions := 3.8.3 2.7.18
 redis_versions := 5.0.9
 ruby_versions := 2.6.6 2.7.1
 rust_versions := 1.44.1
-terraform_versions := 0.12.28 0.11.14
+terraform_versions := 0.12.29 0.11.14
 v_versions := 0.1.24
 java_versions := adopt-openjdk-12.0.2+10.3
 
@@ -106,5 +106,5 @@ plugins:
 	@-asdf plugin-add packer          https://github.com/Banno/asdf-hashicorp.git         || true
 	@-asdf plugin-add terraform       https://github.com/Banno/asdf-hashicorp.git         || true
 	@-asdf plugin-add vault           https://github.com/Banno/asdf-hashicorp.git         || true
-	@-asdf plugin-add v
+	@-asdf plugin-add v || true
 	@asdf plugin-update --all          >/dev/null
