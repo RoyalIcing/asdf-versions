@@ -1,11 +1,11 @@
 erlang_versions := 23.0.2 22.3.4
 elixir_versions := 1.10.3-otp-23 1.9.4
 golang_versions := 1.13.12 1.14.4 1.12.10
-nodejs_versions := 12.18.2 10.15.3
-deno_versions := 1.1.3
+nodejs_versions := 12.18.3 10.15.3
+deno_versions := 1.2.1
 python_versions := 3.8.3 2.7.18
 redis_versions := 5.0.9
-ruby_versions := 2.6.5 2.7.1
+ruby_versions := 2.6.6 2.7.1
 rust_versions := 1.44.1
 terraform_versions := 0.12.28 0.11.14
 v_versions := 0.1.24
