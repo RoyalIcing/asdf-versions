@@ -4,6 +4,7 @@ golang_versions := 1.13.12 1.14.6 1.12.10
 nodejs_versions := 12.18.3 10.15.3
 deno_versions := 1.2.2
 python_versions := 3.8.3 2.7.18
+clojure_versions := 1.10.1
 redis_versions := 5.0.9
 ruby_versions := 2.6.6 2.7.1
 rust_versions := 1.44.1
@@ -11,7 +12,7 @@ terraform_versions := 0.12.29 0.11.14
 v_versions := 0.1.24
 java_versions := adopt-openjdk-12.0.2+10.3
 
-names := elixir erlang golang nodejs deno python redis ruby rust terraform v java
+names := elixir erlang golang nodejs deno python clojure redis ruby rust terraform v java
 
 SPACE := $() $()
 ERROR_COLOR=\x1b[31;01m
@@ -56,6 +57,7 @@ all_versions += $(foreach nodejs_version,$(nodejs_versions),nodejs_$(nodejs_vers
 all_versions += $(foreach deno_version,$(deno_versions),deno_$(deno_version))
 all_versions += $(foreach golang_version,$(golang_versions),golang_$(golang_version))
 all_versions += $(foreach python_version,$(python_versions),python_$(python_version))
+all_versions += $(foreach clojure_version,$(clojure_versions),clojure_$(clojure_version))
 all_versions += $(foreach redis_version,$(redis_versions),redis_$(redis_version))
 all_versions += $(foreach ruby_version,$(ruby_versions),ruby_$(ruby_version))
 all_versions += $(foreach rust_version,$(rust_versions),rust_$(rust_version))
@@ -78,6 +80,7 @@ set_globals:
 	asdf global nodejs $(firstword $(nodejs_versions))
 	asdf global deno $(firstword $(deno_versions))
 	asdf global python $(firstword $(python_versions))
+	asdf global clojure $(firstword $(clojure_versions))
 	asdf global ruby $(firstword $(ruby_versions))
 	asdf global rust $(firstword $(rust_versions))
 	asdf global v $(firstword $(v_versions))
