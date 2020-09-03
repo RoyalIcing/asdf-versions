@@ -8,7 +8,7 @@ clojure_versions := 1.10.1
 redis_versions := 6.0.6
 ruby_versions := 2.6.6 2.7.1
 rust_versions := 1.46.0
-terraform_versions := 0.13.0 0.12.29 0.11.14
+terraform_versions := 0.13.2 0.12.29 0.11.14
 v_versions := 0.1.29
 java_versions := adopt-openjdk-12.0.2+10.3
 
