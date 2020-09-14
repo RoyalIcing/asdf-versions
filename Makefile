@@ -61,7 +61,7 @@ $(foreach task,$(all_versions),$(task)):
 
 install: $(all_versions)
 
-set_globals:
+global:
 	asdf global elixir $(firstword $(elixir_versions))
 	asdf global erlang $(firstword $(erlang_versions))
 	asdf global golang $(firstword $(golang_versions))
