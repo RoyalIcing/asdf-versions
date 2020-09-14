@@ -13,7 +13,7 @@ default:
 	git pull --rebase
 	$(MAKE) plugins
 	$(MAKE) -j 10 install
-	$(MAKE) set_globals
+	$(MAKE) global
 
 # Define tasks such as golang_1.13.5
 $(foreach task,$(all_versions),$(task)):
