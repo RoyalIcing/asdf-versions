@@ -5,6 +5,7 @@ nodejs_versions := 12.18.3 10.15.3
 deno_versions := 1.4.0
 python_versions := 3.8.5 2.7.18
 clojure_versions := 1.10.1
+opam_versions := 2.0.7
 redis_versions := 6.0.6
 ruby_versions := 2.6.6 2.7.1
 rust_versions := 1.46.0

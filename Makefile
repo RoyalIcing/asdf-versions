@@ -1,6 +1,6 @@
 include ./config.makefile
 
-names := elixir erlang golang nodejs deno python clojure redis ruby rust terraform v java
+names := elixir erlang golang nodejs deno python opam clojure redis ruby rust terraform v java
 
 SPACE := $() $()
 ERROR_COLOR=\x1b[31;01m
@@ -46,6 +46,7 @@ all_versions += $(foreach deno_version,$(deno_versions),deno_$(deno_version))
 all_versions += $(foreach golang_version,$(golang_versions),golang_$(golang_version))
 all_versions += $(foreach python_version,$(python_versions),python_$(python_version))
 all_versions += $(foreach clojure_version,$(clojure_versions),clojure_$(clojure_version))
+all_versions += $(foreach opam_version,$(opam_versions),opam_$(opam_version))
 all_versions += $(foreach redis_version,$(redis_versions),redis_$(redis_version))
 all_versions += $(foreach ruby_version,$(ruby_versions),ruby_$(ruby_version))
 all_versions += $(foreach rust_version,$(rust_versions),rust_$(rust_version))
@@ -69,6 +70,7 @@ global:
 	asdf global deno $(firstword $(deno_versions))
 	asdf global python $(firstword $(python_versions))
 	asdf global clojure $(firstword $(clojure_versions))
+	asdf global opam $(firstword $(opam_versions))
 	asdf global ruby $(firstword $(ruby_versions))
 	asdf global rust $(firstword $(rust_versions))
 	asdf global v $(firstword $(v_versions))
@@ -86,7 +88,7 @@ plugins:
 	@-asdf plugin-add java            https://github.com/skotchpine/asdf-java.git         || true
 	@-asdf plugin-add nodejs          https://github.com/asdf-vm/asdf-nodejs.git          || true
 	@-asdf plugin-add deno            https://github.com/asdf-community/asdf-deno.git     || true
-	@-asdf plugin-add ocaml           https://github.com/vic/asdf-ocaml.git               || true
+	@-asdf plugin-add opam            https://github.com/asdf-community/asdf-opam.git     || true
 	@-asdf plugin-add postgres        https://github.com/smashedtoatoms/asdf-postgres     || true
 	@-asdf plugin-add python          https://github.com/danhper/asdf-python.git          || true
 	@-asdf plugin-add rebar           https://github.com/Stratus3D/asdf-rebar             || true
