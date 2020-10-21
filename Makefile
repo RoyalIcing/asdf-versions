@@ -1,6 +1,6 @@
 include ./config.makefile
 
-names := elixir erlang golang nodejs deno python opam clojure redis ruby rust terraform v java
+names := elixir erlang golang nodejs deno python opam clojure redis ruby rust terraform v java zig
 
 SPACE := $() $()
 ERROR_COLOR=\x1b[31;01m
@@ -53,6 +53,7 @@ all_versions += $(foreach rust_version,$(rust_versions),rust_$(rust_version))
 all_versions += $(foreach terraform_version,$(terraform_versions),terraform_$(terraform_version))
 all_versions += $(foreach v_version,$(v_versions),v_$(v_version))
 all_versions += $(foreach suffix,$(java_versions),java_$(suffix))
+all_versions += $(foreach suffix,$(zig_versions),zig_$(suffix))
 plan:
 	@echo $(all_versions) | sed "y/ /\n/"
 
@@ -75,6 +76,7 @@ global:
 	asdf global rust $(firstword $(rust_versions))
 	asdf global v $(firstword $(v_versions))
 	asdf global java $(firstword $(java_versions))
+	asdf global zig $(firstword $(zig_versions))
 
 plugins:
 	@-asdf plugin-add clojure         https://github.com/halcyon/asdf-clojure.git         || true
@@ -100,4 +102,5 @@ plugins:
 	@-asdf plugin-add terraform       https://github.com/Banno/asdf-hashicorp.git         || true
 	@-asdf plugin-add vault           https://github.com/Banno/asdf-hashicorp.git         || true
 	@-asdf plugin-add v || true
+	@-asdf plugin add zig || true
 	@asdf plugin-update --all          >/dev/null

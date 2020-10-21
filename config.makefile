@@ -12,3 +12,4 @@ rust_versions := 1.46.0
 terraform_versions := 0.13.2 0.12.29 0.11.14
 v_versions := 0.1.29
 java_versions := adopt-openjdk-12.0.2+10.3
+zig_versions := 0.6.0
