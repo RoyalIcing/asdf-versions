@@ -74,6 +74,7 @@ global:
 	asdf global opam $(firstword $(opam_versions))
 	asdf global ruby $(firstword $(ruby_versions))
 	asdf global rust $(firstword $(rust_versions))
+	asdf global terraform $(firstword $(terraform_versions))
 	asdf global v $(firstword $(v_versions))
 	asdf global java $(firstword $(java_versions))
 	asdf global zig $(firstword $(zig_versions))
