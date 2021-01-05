@@ -1,4 +1,4 @@
-erlang_versions := 23.1.4 22.3.4
+erlang_versions := 23.2.1 22.3.4
 elixir_versions := 1.11.1-otp-23 1.9.4
 golang_versions := 1.13.15 1.15.5 1.14.11 1.12.10
 nodejs_versions := 12.19.1 15.3.0
