@@ -1,6 +1,6 @@
 erlang_versions := 23.2.2 22.3.4
 elixir_versions := 1.11.3-otp-23 1.9.4
-golang_versions := 1.13.15 1.15.6 1.14.11 1.12.10
+golang_versions := 1.13.15 1.15.7 1.14.11 1.12.10
 nodejs_versions := 12.20.1 15.5.1
 deno_versions := 1.6.3
 python_versions := 3.9.1 2.7.18
