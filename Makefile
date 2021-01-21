@@ -11,13 +11,10 @@ fn_version_regex = $(subst $(SPACE),|,$(subst .,\.,$(1)))
 
 default:
 	git pull --rebase
+	asdf update
 	$(MAKE) plugins
 	$(MAKE) -j 10 install
 	$(MAKE) global
-
-# Define tasks such as golang_1.13.5
-$(foreach task,$(all_versions),$(task)):
-	asdf install $(subst _, ,$@)
 
 LIMIT ?= 5
 
@@ -59,6 +56,8 @@ plan:
 
 # Define tasks such as golang_1.13.5
 $(foreach task,$(all_versions),$(task)):
+	asdf update
+	asdf plugin update $(firstword $(subst _, ,$@))
 	asdf install $(subst _, ,$@)
 
 install: $(all_versions)
