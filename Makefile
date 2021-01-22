@@ -9,10 +9,12 @@ NO_COLOR=\x1b[0m
 
 fn_version_regex = $(subst $(SPACE),|,$(subst .,\.,$(1)))
 
-default: install_parallel
+default: pull install_parallel
+
+pull:
+	git pull --rebase
 
 install_parallel: asdf
-	git pull --rebase
 	$(MAKE) plugins
 	$(MAKE) -j 10 install
 	$(MAKE) global
@@ -60,7 +62,7 @@ plan:
 
 # Define tasks such as golang_1.13.5
 $(foreach task,$(all_versions),$(task)): asdf
-	asdf plugin update $(firstword $(subst _, ,$@))
+	#asdf plugin update $(firstword $(subst _, ,$@))
 	asdf install $(subst _, ,$@)
 
 install: $(all_versions)
