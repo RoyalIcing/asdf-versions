@@ -30,7 +30,7 @@ define fn_list_named
 endef
 
 $(foreach name,$(names),$(name)):
-	$(call fn_list_named,$@)
+	@echo "$@ | latest:" $(shell asdf latest $@) "|" "current:" $($(@)_versions)
 
 # Lazy but run once
 all_terraform_versions = $(eval all_terraform_versions := $(shell asdf list-all terraform))$(all_terraform_versions)
@@ -41,6 +41,11 @@ list_terraform:
 list:
 	@echo "Installed:"
 	@make -j 10 $(names)
+
+latest:
+	@echo "Retrieving latest for: $(names)"
+	@make -j 10 $(names) | column -t -s"|"
+
 
 all_versions := $(foreach erlang_version,$(erlang_versions),erlang_$(erlang_version))
 all_versions += $(foreach elixir_version,$(elixir_versions),elixir_$(elixir_version))
