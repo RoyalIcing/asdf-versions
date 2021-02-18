@@ -13,3 +13,4 @@ terraform_versions := 0.14.6 0.12.29 0.11.14
 v_versions := 0.2.2 
 java_versions := adopt-openjdk-12.0.2+10.3
 zig_versions := 0.7.1
+sbcl_versions := 2.1.1

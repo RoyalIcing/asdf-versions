@@ -1,6 +1,6 @@
 include ./config.makefile
 
-names := elixir erlang golang nodejs deno python opam clojure redis ruby rust terraform v java zig
+names := erlang elixir golang nodejs deno python opam clojure redis ruby rust terraform v java zig sbcl
 
 SPACE := $() $()
 ERROR_COLOR=\x1b[31;01m
@@ -46,27 +46,13 @@ latest:
 	@echo "Retrieving latest for: $(names)"
 	@make -j 10 $(names) | column -t -s"|"
 
+install_tasks := $(foreach name,$(names),$(foreach suffix,$($(name)_versions),$(name)_$(suffix)))
 
-all_versions := $(foreach erlang_version,$(erlang_versions),erlang_$(erlang_version))
-all_versions += $(foreach elixir_version,$(elixir_versions),elixir_$(elixir_version))
-all_versions += $(foreach nodejs_version,$(nodejs_versions),nodejs_$(nodejs_version))
-all_versions += $(foreach deno_version,$(deno_versions),deno_$(deno_version))
-all_versions += $(foreach golang_version,$(golang_versions),golang_$(golang_version))
-all_versions += $(foreach python_version,$(python_versions),python_$(python_version))
-all_versions += $(foreach clojure_version,$(clojure_versions),clojure_$(clojure_version))
-all_versions += $(foreach opam_version,$(opam_versions),opam_$(opam_version))
-all_versions += $(foreach redis_version,$(redis_versions),redis_$(redis_version))
-all_versions += $(foreach ruby_version,$(ruby_versions),ruby_$(ruby_version))
-all_versions += $(foreach rust_version,$(rust_versions),rust_$(rust_version))
-all_versions += $(foreach terraform_version,$(terraform_versions),terraform_$(terraform_version))
-all_versions += $(foreach v_version,$(v_versions),v_$(v_version))
-all_versions += $(foreach suffix,$(java_versions),java_$(suffix))
-all_versions += $(foreach suffix,$(zig_versions),zig_$(suffix))
 plan:
-	@echo $(all_versions) | sed "y/ /\n/"
+	@echo $(install_tasks) | sed "y/ /\n/"
 
 # Define tasks such as golang_1.13.5
-$(foreach task,$(all_versions),$(task)): asdf
+$(foreach task,$(install_tasks),$(task)): asdf
 	#asdf plugin update $(firstword $(subst _, ,$@))
 	asdf install $(subst _, ,$@)
 
@@ -87,6 +73,7 @@ global:
 	asdf global v $(firstword $(v_versions))
 	asdf global java $(firstword $(java_versions))
 	asdf global zig $(firstword $(zig_versions))
+	asdf global sbcl $(firstword $(sbcl_versions))
 
 plugins:
 	@-asdf plugin-add clojure         https://github.com/halcyon/asdf-clojure.git         || true
@@ -113,4 +100,5 @@ plugins:
 	@-asdf plugin-add vault           https://github.com/Banno/asdf-hashicorp.git         || true
 	@-asdf plugin-add v || true
 	@-asdf plugin add zig || true
+	@-asdf plugin add sbcl https://github.com/smashedtoatoms/asdf-sbcl.git || true
 	@asdf plugin-update --all          >/dev/null
