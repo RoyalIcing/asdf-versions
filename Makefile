@@ -58,7 +58,7 @@ $(foreach task,$(install_tasks),$(task)): asdf
 	#asdf plugin update $(firstword $(subst _, ,$@))
 	asdf install $(subst _, ,$@)
 
-install: $(all_versions)
+install: $(install_tasks)
 
 global:
 	asdf global elixir $(firstword $(elixir_versions))
