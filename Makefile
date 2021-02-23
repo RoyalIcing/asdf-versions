@@ -2,6 +2,8 @@ include ./config.makefile
 
 names := erlang elixir golang nodejs deno python opam clojure redis ruby rust terraform v java zig sbcl
 
+.PHONY: pull install install_parallel asdf
+
 SPACE := $() $()
 ERROR_COLOR=\x1b[31;01m
 SUCCESS_COLOR=\x1b[32;01m
