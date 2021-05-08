@@ -61,21 +61,21 @@ $(foreach task,$(install_tasks),$(task)): asdf
 install: $(install_tasks)
 
 global:
-	asdf global elixir $(firstword $(elixir_versions))
-	asdf global erlang $(firstword $(erlang_versions))
-	asdf global golang $(firstword $(golang_versions))
-	asdf global nodejs $(firstword $(nodejs_versions))
-	asdf global deno $(firstword $(deno_versions))
-	asdf global python $(firstword $(python_versions))
-	asdf global clojure $(firstword $(clojure_versions))
-	asdf global opam $(firstword $(opam_versions))
-	asdf global ruby $(firstword $(ruby_versions))
-	asdf global rust $(firstword $(rust_versions))
-	asdf global terraform $(firstword $(terraform_versions))
-	asdf global v $(firstword $(v_versions))
-	asdf global java $(firstword $(java_versions))
-	asdf global zig $(firstword $(zig_versions))
-	asdf global sbcl $(firstword $(sbcl_versions))
+	asdf global elixir $(firstword $(elixir_versions)) || true
+	asdf global erlang $(firstword $(erlang_versions)) || true
+	asdf global golang $(firstword $(golang_versions)) || true
+	asdf global nodejs $(firstword $(nodejs_versions)) || true
+	asdf global deno $(firstword $(deno_versions)) || true
+	asdf global python $(firstword $(python_versions)) || true
+	asdf global clojure $(firstword $(clojure_versions)) || true
+	asdf global opam $(firstword $(opam_versions)) || true
+	asdf global ruby $(firstword $(ruby_versions)) || true
+	asdf global rust $(firstword $(rust_versions)) || true
+	asdf global terraform $(firstword $(terraform_versions)) || true
+	asdf global v $(firstword $(v_versions)) || true
+	asdf global java $(firstword $(java_versions)) || true
+	asdf global zig $(firstword $(zig_versions)) || true
+	asdf global sbcl $(firstword $(sbcl_versions)) || true
 
 plugins:
 	@-asdf plugin-add clojure         https://github.com/halcyon/asdf-clojure.git         || true
