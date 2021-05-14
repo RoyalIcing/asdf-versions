@@ -9,6 +9,15 @@ ERROR_COLOR=\x1b[31;01m
 SUCCESS_COLOR=\x1b[32;01m
 NO_COLOR=\x1b[0m
 
+# Erlang
+export EGREP = egrep
+export CC = clang
+export CPP = clang -E
+export KERL_USE_AUTOCONF = 0
+
+env:
+	echo $(CPP)
+
 fn_version_regex = $(subst $(SPACE),|,$(subst .,\.,$(1)))
 
 default: pull install_parallel
