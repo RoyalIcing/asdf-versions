@@ -15,9 +15,6 @@ export CC = clang
 export CPP = clang -E
 export KERL_USE_AUTOCONF = 0
 
-env:
-	echo $(CPP)
-
 fn_version_regex = $(subst $(SPACE),|,$(subst .,\.,$(1)))
 
 default: pull install_parallel
