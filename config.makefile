@@ -11,12 +11,12 @@ endif
 nodejs_versions := 14.17.1 12.21.0 15.14.0
 deno_versions := 1.11.2
 python_versions := 3.9.5 2.7.18
-clojure_versions := 1.10.2.774
+clojure_versions := 1.10.3.855
 opam_versions := 2.0.8
 redis_versions := 6.2.4
 ruby_versions := 3.0.1 2.7.2
 rust_versions := 1.53.0
-terraform_versions := 1.0.0 0.12.29 0.11.14
+terraform_versions := 1.0.1 0.12.29 0.11.14
 v_versions := 0.2.2 
 java_versions := adopt-openjdk-12.0.2+10.3
 zig_versions := 0.8.0
