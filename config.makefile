@@ -10,7 +10,7 @@ golang_versions := 1.16.5 1.13.15 1.14.11 1.12.10
 endif
 nodejs_versions := 14.17.1 12.21.0 15.14.0
 deno_versions := 1.11.2
-python_versions := 3.9.5 2.7.18
+python_versions := 3.9.6 2.7.18
 clojure_versions := 1.10.3.855
 opam_versions := 2.0.8
 redis_versions := 6.2.4
