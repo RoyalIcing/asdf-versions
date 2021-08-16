@@ -2,7 +2,7 @@ include ./config.makefile
 
 names := erlang elixir golang nodejs deno python opam clojure redis ruby rust terraform v java zig sbcl
 
-.PHONY: pull install install_parallel asdf
+.PHONY: pull install install_parallel asdf plugins
 
 SPACE := $() $()
 ERROR_COLOR=\x1b[31;01m
@@ -66,6 +66,16 @@ $(foreach task,$(install_tasks),$(task)): asdf
 
 install: $(install_tasks)
 
+# Define tasks such as update_golang
+$(foreach name,$(names),update_$(name)): asdf
+	asdf plugin update $(subst update_,,$@)
+	asdf latest $(subst update_,,$@) | pbcopy
+	$(MAKE) $(subst update_,,$@)
+	micro config.makefile
+	$(MAKE) install
+	git add config.makefile
+	git commit -m "Update $(subst update_,,$@)"
+
 global:
 	asdf global elixir $(firstword $(elixir_versions)) || true
 	asdf global erlang $(firstword $(erlang_versions)) || true
@@ -83,7 +93,7 @@ global:
 	asdf global zig $(firstword $(zig_versions)) || true
 	asdf global sbcl $(firstword $(sbcl_versions)) || true
 
-plugins:
+plugins: asdf
 	@-asdf plugin-add clojure         https://github.com/halcyon/asdf-clojure.git         || true
 	@-asdf plugin-add crystal         https://github.com/marciogm/asdf-crystal.git        || true
 	@-asdf plugin-add dep             https://github.com/paxosglobal/asdf-dep             || true
