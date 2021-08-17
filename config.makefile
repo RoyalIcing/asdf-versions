@@ -4,9 +4,9 @@ erlang_versions := 24.0.5 23.3.4 22.3.4
 elixir_versions := 1.12.2-otp-24
 
 ifeq ($(arch), arm64)
-golang_versions := 1.16.7
+golang_versions := 1.17
 else
-golang_versions := 1.16.7 1.13.15 1.14.11 1.12.10
+golang_versions := 1.17 1.13.15 1.14.11 1.12.10
 endif
 nodejs_versions := 14.17.1 12.21.0 15.14.0
 deno_versions := 1.13.0
