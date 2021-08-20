@@ -8,7 +8,7 @@ golang_versions := 1.17
 else
 golang_versions := 1.17 1.13.15 1.14.11 1.12.10
 endif
-nodejs_versions := 14.17.1 12.21.0 15.14.0
+nodejs_versions := 14.17.5 12.21.0 15.14.0
 deno_versions := 1.13.1
 python_versions := 3.9.6 2.7.18
 clojure_versions := 1.10.3.943
