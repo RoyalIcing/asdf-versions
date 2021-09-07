@@ -1,7 +1,7 @@
 arch = $(shell arch)
 
 erlang_versions := 24.0.6 23.3.4 22.3.4
-elixir_versions := 1.12.2-otp-24
+elixir_versions := 1.12.3-otp-24
 
 ifeq ($(arch), arm64)
 golang_versions := 1.17
