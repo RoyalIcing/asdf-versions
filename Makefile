@@ -1,6 +1,6 @@
 include ./config.makefile
 
-names := erlang elixir golang nodejs deno python opam clojure redis ruby rust terraform v java zig sbcl
+names := erlang elixir golang nodejs deno python opam clojure redis ruby rust terraform v java zig sbcl swiprolog
 
 .PHONY: pull install install_parallel asdf plugins
 
@@ -92,6 +92,7 @@ global:
 	asdf global java $(firstword $(java_versions)) || true
 	asdf global zig $(firstword $(zig_versions)) || true
 	asdf global sbcl $(firstword $(sbcl_versions)) || true
+	asdf global swiprolog $(firstword $(swiprolog_versions)) || true
 
 plugins: asdf
 	@-asdf plugin-add clojure         https://github.com/halcyon/asdf-clojure.git         || true
@@ -116,6 +117,7 @@ plugins: asdf
 	@-asdf plugin-add packer          https://github.com/Banno/asdf-hashicorp.git         || true
 	@-asdf plugin-add terraform       https://github.com/Banno/asdf-hashicorp.git         || true
 	@-asdf plugin-add vault           https://github.com/Banno/asdf-hashicorp.git         || true
+	@-asdf plugin-add swiprolog       https://github.com/mracos/asdf-swiprolog.git        || true
 	@-asdf plugin-add v || true
 	@-asdf plugin add zig || true
 	@-asdf plugin add sbcl https://github.com/smashedtoatoms/asdf-sbcl.git || true
