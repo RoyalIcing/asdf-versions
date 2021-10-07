@@ -21,4 +21,4 @@ v_versions := 0.2.4
 java_versions := adopt-openjdk-12.0.2+10.3
 zig_versions := 0.8.1
 sbcl_versions := 2.1.7
-swiprolog_versions := 8.2.4
+swiprolog_versions := 8.4.0
