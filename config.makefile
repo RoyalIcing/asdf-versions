@@ -11,7 +11,7 @@ endif
 nodejs_versions := 14.17.5 12.21.0 15.14.0
 deno_versions := 1.14.3
 python_versions := 3.10.0 2.7.18
-clojure_versions := 1.10.3.967
+clojure_versions := 1.10.3.986
 opam_versions := 2.1.0
 redis_versions := 6.2.6
 ruby_versions := 3.0.2 2.7.2
