@@ -5,12 +5,12 @@ elixir_versions := 1.12.3-otp-24
 
 ifeq ($(arch), arm64)
 golang_versions := 1.17.2
-nodejs_versions := 16.11.1
+nodejs_versions := 16.12.0
 python_versions := 3.10.0
 opam_versions := 
 else
 golang_versions := 1.17.2 1.13.15 1.14.11 1.12.10
-nodejs_versions := 14.18.1 12.21.0 15.14.0
+nodejs_versions := 16.12.0 14.18.1 12.21.0
 python_versions := 3.10.0 2.7.18
 opam_versions := 2.1.0
 endif
