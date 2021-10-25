@@ -23,5 +23,5 @@ terraform_versions := 1.0.9
 v_versions := 0.2.4
 java_versions := adoptopenjdk-17.0.0+35
 zig_versions := 0.8.1
-sbcl_versions := 2.1.7
+sbcl_versions := 2.1.9
 swiprolog_versions := 8.4.0
