@@ -28,7 +28,7 @@ install_parallel: asdf
 	$(MAKE) global
 
 asdf:
-	asdf update
+	#asdf update
 
 LIMIT ?= 5
 
@@ -95,29 +95,29 @@ global:
 	asdf global swiprolog $(firstword $(swiprolog_versions)) || true
 
 plugins: asdf
-	@-asdf plugin-add clojure         https://github.com/halcyon/asdf-clojure.git         || true
-	@-asdf plugin-add crystal         https://github.com/marciogm/asdf-crystal.git        || true
-	@-asdf plugin-add dep             https://github.com/paxosglobal/asdf-dep             || true
-	@-asdf plugin-add elixir          https://github.com/asdf-vm/asdf-elixir              || true
-	@-asdf plugin-add elm             https://github.com/vic/asdf-elm.git                 || true
-	@-asdf plugin-add erlang          https://github.com/asdf-vm/asdf-erlang.git          || true
-	@-asdf plugin-add golang          https://github.com/kennyp/asdf-golang.git           || true
-	@-asdf plugin-add haskell         https://github.com/vic/asdf-haskell.git             || true
-	@-asdf plugin-add java            https://github.com/skotchpine/asdf-java.git         || true
-	@-asdf plugin-add nodejs          https://github.com/asdf-vm/asdf-nodejs.git          || true
-	@-asdf plugin-add deno            https://github.com/asdf-community/asdf-deno.git     || true
-	@-asdf plugin-add opam            https://github.com/asdf-community/asdf-opam.git     || true
-	@-asdf plugin-add postgres        https://github.com/smashedtoatoms/asdf-postgres     || true
-	@-asdf plugin-add python          https://github.com/danhper/asdf-python.git          || true
-	@-asdf plugin-add rebar           https://github.com/Stratus3D/asdf-rebar             || true
-	@-asdf plugin-add redis           https://github.com/smashedtoatoms/asdf-redis.git    || true
-	@-asdf plugin-add ruby            https://github.com/asdf-vm/asdf-ruby                || true
-	@-asdf plugin-add rust            https://github.com/code-lever/asdf-rust.git         || true
-	@-asdf plugin-add consul          https://github.com/Banno/asdf-hashicorp.git         || true
-	@-asdf plugin-add packer          https://github.com/Banno/asdf-hashicorp.git         || true
-	@-asdf plugin-add terraform       https://github.com/Banno/asdf-hashicorp.git         || true
-	@-asdf plugin-add vault           https://github.com/Banno/asdf-hashicorp.git         || true
-	@-asdf plugin-add swiprolog       https://github.com/mracos/asdf-swiprolog.git        || true
+	@-asdf plugin-add clojure         #https://github.com/halcyon/asdf-clojure.git         || true
+	@-asdf plugin-add crystal         #https://github.com/marciogm/asdf-crystal.git        || true
+	@-asdf plugin-add dep             #https://github.com/paxosglobal/asdf-dep             || true
+	@-asdf plugin-add elixir          #https://github.com/asdf-vm/asdf-elixir              || true
+	@-asdf plugin-add elm             #https://github.com/vic/asdf-elm.git                 || true
+	@-asdf plugin-add erlang          #https://github.com/asdf-vm/asdf-erlang.git          || true
+	@-asdf plugin-add golang          #https://github.com/kennyp/asdf-golang.git           || true
+	@-asdf plugin-add haskell         #https://github.com/vic/asdf-haskell.git             || true
+	@-asdf plugin-add java            #https://github.com/skotchpine/asdf-java.git         || true
+	@-asdf plugin-add nodejs          #https://github.com/asdf-vm/asdf-nodejs.git          || true
+	@-asdf plugin-add deno            #https://github.com/asdf-community/asdf-deno.git     || true
+	@-asdf plugin-add opam            #https://github.com/asdf-community/asdf-opam.git     || true
+	@-asdf plugin-add postgres        #https://github.com/smashedtoatoms/asdf-postgres     || true
+	@-asdf plugin-add python          #https://github.com/danhper/asdf-python.git          || true
+	@-asdf plugin-add rebar           #https://github.com/Stratus3D/asdf-rebar             || true
+	@-asdf plugin-add redis           #https://github.com/smashedtoatoms/asdf-redis.git    || true
+	@-asdf plugin-add ruby            #https://github.com/asdf-vm/asdf-ruby                || true
+	@-asdf plugin-add rust            #https://github.com/code-lever/asdf-rust.git         || true
+	@-asdf plugin-add consul          #https://github.com/Banno/asdf-hashicorp.git         || true
+	@-asdf plugin-add packer          #https://github.com/Banno/asdf-hashicorp.git         || true
+	@-asdf plugin-add terraform       #https://github.com/Banno/asdf-hashicorp.git         || true
+	@-asdf plugin-add vault           #https://github.com/Banno/asdf-hashicorp.git         || true
+	@-asdf plugin-add swiprolog       #https://github.com/mracos/asdf-swiprolog.git        || true
 	@-asdf plugin-add v || true
 	@-asdf plugin add zig || true
 	@-asdf plugin add sbcl https://github.com/smashedtoatoms/asdf-sbcl.git || true
