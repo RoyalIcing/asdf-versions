@@ -8,11 +8,13 @@ golang_versions := 1.17.2
 nodejs_versions := 16.12.0
 python_versions := 3.10.0
 opam_versions := 
+swiprolog_versions :=
 else
 golang_versions := 1.17.2 1.13.15 1.14.11 1.12.10
 nodejs_versions := 16.12.0 14.18.1 12.21.0
 python_versions := 3.10.0 2.7.18
 opam_versions := 2.1.0
+swiprolog_versions := 8.4.0
 endif
 deno_versions := 1.15.3
 clojure_versions := 1.10.3.986
@@ -24,4 +26,3 @@ v_versions := 0.2.4
 java_versions := adoptopenjdk-17.0.0+35
 zig_versions := 0.8.1
 sbcl_versions := 2.1.9
-swiprolog_versions := 8.4.0
