@@ -1,6 +1,6 @@
 arch = $(shell arch)
 
-erlang_versions := 24.1.5
+erlang_versions := 24.1.7
 elixir_versions := 1.12.3-otp-24
 
 ifeq ($(arch), arm64)
