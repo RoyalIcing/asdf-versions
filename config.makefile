@@ -19,7 +19,7 @@ endif
 deno_versions := 1.15.3
 clojure_versions := 1.10.3.1040
 redis_versions := 6.2.6
-ruby_versions := 3.0.2 2.7.2
+ruby_versions := 3.0.3
 rust_versions := 1.56.1
 terraform_versions := 1.0.11
 v_versions := 0.2.4
