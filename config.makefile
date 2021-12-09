@@ -4,13 +4,13 @@ erlang_versions := 24.1.7
 elixir_versions := 1.12.3-otp-24
 
 ifeq ($(arch), arm64)
-golang_versions := 1.17.3
+golang_versions := 1.17.4
 nodejs_versions := 16.13.1
 python_versions := 3.10.0
 opam_versions := 
 swiprolog_versions :=
 else
-golang_versions := 1.17.3 1.13.15 1.14.11 1.12.10
+golang_versions := 1.17.4 1.13.15 1.14.11 1.12.10
 nodejs_versions := 16.13.1 14.18.1 12.21.0
 python_versions := 3.10.0 2.7.18
 opam_versions := 2.1.0
