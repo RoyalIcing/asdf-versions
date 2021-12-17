@@ -16,7 +16,7 @@ python_versions := 3.10.1 2.7.18
 opam_versions := 2.1.0
 swiprolog_versions := 8.4.0
 endif
-deno_versions := 1.15.3
+deno_versions := 1.17.0
 clojure_versions := 1.10.3.1040
 redis_versions := 6.2.6
 ruby_versions := 3.0.3
