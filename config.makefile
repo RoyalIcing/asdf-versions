@@ -24,5 +24,5 @@ rust_versions := 1.57.0
 terraform_versions := 1.1.2
 v_versions := 0.2.4
 java_versions := adoptopenjdk-17.0.0+35
-zig_versions := 0.8.1
+zig_versions := 0.9.0
 sbcl_versions := 2.1.9
