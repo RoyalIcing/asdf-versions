@@ -26,6 +26,7 @@ install_parallel: asdf
 	$(MAKE) plugins
 	$(MAKE) -j 10 install
 	$(MAKE) global
+	$(MAKE) extra
 
 asdf:
 	#asdf update
@@ -93,6 +94,13 @@ global:
 	asdf global zig $(firstword $(zig_versions)) || true
 	asdf global sbcl $(firstword $(sbcl_versions)) || true
 	asdf global swiprolog $(firstword $(swiprolog_versions)) || true
+
+extra:
+	asdf reshim
+	npm i -g npm
+	npm i -g @cloudflare/wrangler
+	pip install datasette
+	pip install sqlite-utils
 
 plugins: asdf
 	@-asdf plugin-add clojure         #https://github.com/halcyon/asdf-clojure.git         || true
