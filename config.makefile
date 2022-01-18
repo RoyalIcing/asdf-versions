@@ -1,7 +1,7 @@
 arch = $(shell arch)
 
 erlang_versions := 24.2
-elixir_versions := 1.13.1-otp-24
+elixir_versions := 1.13.2-otp-24
 
 deno_versions := 1.17.3
 clojure_versions := 1.10.3.1040
