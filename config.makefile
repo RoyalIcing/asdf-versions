@@ -4,7 +4,7 @@ erlang_versions := 24.2
 elixir_versions := 1.13.2-otp-24
 
 deno_versions := 1.17.3
-clojure_versions := 1.10.3.1040
+clojure_versions := 1.10.3.1058
 redis_versions := 6.2.6
 ruby_versions := 3.1.0
 rust_versions := 1.58.0
