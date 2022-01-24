@@ -99,6 +99,7 @@ extra:
 	asdf reshim
 	npm i -g npm
 	npm i -g @cloudflare/wrangler
+	pip install -U pip
 	pip install datasette
 	pip install sqlite-utils
 
