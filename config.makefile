@@ -1,6 +1,6 @@
 arch = $(shell arch)
 
-erlang_versions := 24.2
+erlang_versions := 24.2.1
 elixir_versions := 1.13.2-otp-24
 
 deno_versions := 1.17.3
