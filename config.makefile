@@ -3,8 +3,8 @@ arch = $(shell arch)
 erlang_versions := 24.2.1
 elixir_versions := 1.13.2-otp-24
 
-deno_versions := 1.18.1
-clojure_versions := 1.10.3.1058
+deno_versions := 1.18.2
+clojure_versions := 1.10.3.1075
 redis_versions := 6.2.6
 ruby_versions := 3.1.0
 rust_versions := 1.58.1
