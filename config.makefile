@@ -2,12 +2,12 @@ arch = $(shell arch)
 
 erlang_versions := 24.2.1
 elixir_versions := 1.13.2-otp-24
-
+nodejs_versions := 16.13.2
 deno_versions := 1.18.2
+rust_versions := 1.58.1
 clojure_versions := 1.10.3.1075
 redis_versions := 6.2.6
 ruby_versions := 3.1.0
-rust_versions := 1.58.1
 terraform_versions := 1.1.3
 v_versions := 0.2.4
 java_versions := adoptopenjdk-17.0.0+35
@@ -16,13 +16,11 @@ sbcl_versions := 2.1.9
 
 ifeq ($(arch), arm64)
 golang_versions := 1.17.6
-nodejs_versions := 16.13.1
 python_versions := 3.10.2
 opam_versions := 
 swiprolog_versions :=
 else
 golang_versions := 1.17.6 1.13.15 1.14.11 1.12.10
-nodejs_versions := 16.13.1 14.18.1 12.21.0
 python_versions := 3.10.2 2.7.18
 opam_versions := 2.1.0
 swiprolog_versions := 8.4.0
