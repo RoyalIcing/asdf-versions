@@ -3,7 +3,7 @@ arch = $(shell arch)
 erlang_versions := 24.2.1
 elixir_versions := 1.13.3-otp-24
 nodejs_versions := 16.14.0
-deno_versions := 1.18.2
+deno_versions := 1.19.0
 rust_versions := 1.58.1
 clojure_versions := 1.10.3.1075
 redis_versions := 6.2.6
@@ -11,7 +11,7 @@ ruby_versions := 3.1.0
 terraform_versions := 1.1.6
 v_versions := 0.2.4
 java_versions := adoptopenjdk-17.0.0+35
-zig_versions := 0.9.0
+zig_versions := 0.9.1
 sbcl_versions := 2.1.9
 
 ifeq ($(arch), arm64)
