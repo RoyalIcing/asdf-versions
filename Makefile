@@ -1,6 +1,6 @@
 include ./config.makefile
 
-names := erlang elixir golang nodejs deno python opam clojure redis ruby rust terraform v java zig sbcl swiprolog
+names := erlang elixir gleam golang nodejs deno python opam clojure redis ruby rust terraform v java zig sbcl swiprolog
 
 .PHONY: pull install install_parallel asdf plugins
 
@@ -78,8 +78,9 @@ $(foreach name,$(names),update_$(name)): asdf
 	git commit -m "Update $(subst update_,,$@)"
 
 global:
-	asdf global elixir $(firstword $(elixir_versions)) || true
 	asdf global erlang $(firstword $(erlang_versions)) || true
+	asdf global elixir $(firstword $(elixir_versions)) || true
+	asdf global gleam $(firstword $(gleam_versions)) || true
 	asdf global golang $(firstword $(golang_versions)) || true
 	asdf global nodejs $(firstword $(nodejs_versions)) || true
 	asdf global deno $(firstword $(deno_versions)) || true
@@ -112,9 +113,10 @@ plugins: asdf
 	@-asdf plugin-add clojure          || true
 	@-asdf plugin-add crystal          || true
 	@-asdf plugin-add dep              || true
-	@-asdf plugin-add elixir           || true
-	@-asdf plugin-add elm              || true
 	@-asdf plugin-add erlang           || true
+	@-asdf plugin-add elixir           || true
+	@-asdf plugin-add gleam            || true
+	@-asdf plugin-add elm              || true
 	@-asdf plugin-add golang           || true
 	@-asdf plugin-add haskell          || true
 	@-asdf plugin-add java             || true
