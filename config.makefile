@@ -5,14 +5,14 @@ elixir_versions := 1.13.3-otp-24
 gleam_versions := 0.20.1
 nodejs_versions := 16.14.0
 deno_versions := 1.19.2
+zig_versions := 0.9.1
 rust_versions := 1.59.0
-clojure_versions := 1.10.3.1075
+clojure_versions := 1.10.3.1087
 redis_versions := 6.2.6
 ruby_versions := 3.1.1
 terraform_versions := 1.1.6
 v_versions := 0.2.4
 java_versions := adoptopenjdk-17.0.0+35
-zig_versions := 0.9.1
 sbcl_versions := 2.2.2
 
 ifeq ($(arch), arm64)
