@@ -17,12 +17,12 @@ sbcl_versions := 2.2.2
 
 ifeq ($(arch), arm64)
 golang_versions := 1.18 1.17.8
-python_versions := 3.10.2
+python_versions := 3.10.3
 opam_versions := 
 swiprolog_versions :=
 else
 golang_versions := 1.18 1.17.8 1.13.15 1.14.11 1.12.10
-python_versions := 3.10.2 2.7.18
+python_versions := 3.10.3 2.7.18
 opam_versions := 2.1.0
 swiprolog_versions := 8.4.0
 endif
