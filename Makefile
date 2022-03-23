@@ -101,6 +101,7 @@ extra:
 	npm i -g npm
 	npm i -g @cloudflare/wrangler
 	pip install -U pip
+	pip install httpstat
 	pip install sqlite-utils
 	pip install datasette
 	pip install datasette-atom
@@ -108,6 +109,7 @@ extra:
 	pip install datasette-vega
 	pip install datasette-publish-vercel
 	pip install datasette-publish-fly
+	asdf reshim python
 
 plugins: asdf
 	@-asdf plugin-add clojure          || true
