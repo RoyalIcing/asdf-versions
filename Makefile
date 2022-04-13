@@ -15,6 +15,9 @@ export CC = clang
 export CPP = clang -E
 export KERL_USE_AUTOCONF = 0
 
+# Postgres
+export POSTGRES_EXTRA_CONFIGURE_OPTIONS="--with-openssl --with-libraries=/usr/local/lib:/opt/homebrew/opt/openssl/lib --with-includes=/usr/local/include:/opt/homebrew/opt/openssl/include"
+
 fn_version_regex = $(subst $(SPACE),|,$(subst .,\.,$(1)))
 
 default: pull install_parallel
@@ -110,6 +113,9 @@ extra:
 	pip install -q datasette-publish-vercel
 	pip install -q datasette-publish-fly
 	asdf reshim python
+
+postgres_latest:
+	POSTGRES_EXTRA_CONFIGURE_OPTIONS="--with-openssl --with-libraries=/usr/local/lib:/opt/homebrew/opt/openssl/lib --with-includes=/usr/local/include:/opt/homebrew/opt/openssl/include" asdf install postgres latest
 
 plugins: asdf
 	@-asdf plugin-add clojure          || true
