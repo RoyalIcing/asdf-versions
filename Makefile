@@ -98,17 +98,17 @@ global:
 
 extra:
 	asdf reshim
-	npm i -g npm
-	npm i -g @cloudflare/wrangler
-	pip install -U pip
-	pip install httpstat
-	pip install sqlite-utils
-	pip install datasette
-	pip install datasette-atom
-	pip install datasette-render-images
-	pip install datasette-vega
-	pip install datasette-publish-vercel
-	pip install datasette-publish-fly
+	npm i -g --no-fund npm
+	npm i -g --no-fund @cloudflare/wrangler
+	pip install -q -U pip
+	pip install -q httpstat
+	pip install -q sqlite-utils
+	pip install -q datasette
+	pip install -q datasette-atom
+	pip install -q datasette-render-images
+	pip install -q datasette-vega
+	pip install -q datasette-publish-vercel
+	pip install -q datasette-publish-fly
 	asdf reshim python
 
 plugins: asdf
