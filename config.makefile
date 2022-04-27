@@ -2,7 +2,7 @@ arch = $(shell arch)
 
 erlang_versions := 24.3.3
 elixir_versions := 1.13.4-otp-24
-gleam_versions := 0.20.1
+gleam_versions := 0.21.0
 nodejs_versions := 16.14.2 18.0.0
 deno_versions := 1.21.0
 zig_versions := 0.9.1
