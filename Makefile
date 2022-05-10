@@ -102,7 +102,6 @@ global:
 extra:
 	asdf reshim
 	npm i -g --no-fund npm
-	npm i -g --no-fund @cloudflare/wrangler
 	pip install -q -U pip
 	pip install -q httpstat
 	pip install -q sqlite-utils
