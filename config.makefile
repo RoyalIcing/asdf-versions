@@ -13,7 +13,7 @@ ruby_versions := 3.1.2
 terraform_versions := 1.2.2
 v_versions := 0.2.4
 java_versions := adoptopenjdk-17.0.0+35
-sbcl_versions := 2.2.2
+sbcl_versions := 2.2.5
 
 ifeq ($(arch), arm64)
 golang_versions := 1.18.3 1.17.8
