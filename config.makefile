@@ -11,7 +11,7 @@ clojure_versions := 1.10.3.1087
 redis_versions := 7.0.2
 ruby_versions := 3.1.2
 terraform_versions := 1.2.3
-v_versions := 0.2.4
+v_versions := 0.3
 java_versions := adoptopenjdk-17.0.0+35
 sbcl_versions := 2.2.5
 
