@@ -5,6 +5,7 @@ elixir_versions := 1.13.4-otp-25
 gleam_versions := 0.22.1
 nodejs_versions := 16.16.0 18.6.0
 deno_versions := 1.24.0
+bun_versions := 0.1.5
 zig_versions := 0.9.1
 rust_versions := 1.62.1
 clojure_versions := 1.10.3.1087
