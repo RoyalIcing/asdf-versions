@@ -17,12 +17,12 @@ java_versions := adoptopenjdk-17.0.0+35
 sbcl_versions := 2.2.5
 
 ifeq ($(arch), arm64)
-golang_versions := 1.18.4 1.17.8
+golang_versions := 1.19 1.18.4 1.17.8
 python_versions := 3.10.5
 opam_versions := 
 swiprolog_versions :=
 else
-golang_versions := 1.18.4 1.17.8 1.13.15 1.14.11 1.12.10
+golang_versions := 1.19 1.18.4 1.17.8 1.13.15 1.14.11 1.12.10
 python_versions := 3.10.5 2.7.18
 opam_versions := 2.1.0
 swiprolog_versions := 8.4.0
