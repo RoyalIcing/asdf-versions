@@ -105,6 +105,7 @@ extra:
 	npm i -g --no-fund npm
 	pip install -q -U pip
 	pip install -q httpstat
+	pip install -q mycli
 	pip install -q sqlite-utils
 	pip install -q datasette
 	pip install -q datasette-atom
@@ -113,6 +114,7 @@ extra:
 	pip install -q datasette-publish-vercel
 	pip install -q datasette-publish-fly
 	asdf reshim python
+	rustup target add wasm32-unknown-unknown
 
 postgres_latest:
 	POSTGRES_EXTRA_CONFIGURE_OPTIONS="--with-openssl --with-libraries=/usr/local/lib:/opt/homebrew/opt/openssl/lib --with-includes=/usr/local/include:/opt/homebrew/opt/openssl/include" asdf install postgres latest
