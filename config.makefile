@@ -1,17 +1,17 @@
 arch = $(shell arch)
 
 erlang_versions := 25.3
-elixir_versions := 1.14.3-otp-25
-gleam_versions := 0.27.0
+elixir_versions := 1.14.4-otp-25
+gleam_versions := 0.28.1
 nodejs_versions := 18.15.0
-deno_versions := 1.32.1
-bun_versions := 0.5.7
+deno_versions := 1.32.3
+bun_versions := 0.5.9
 zig_versions := 0.10.1
 rust_versions := 1.68.2
 clojure_versions := 1.11.1.1262
 redis_versions := 7.0.10
-python_versions := 3.11.2
-ruby_versions := 3.2.1
+python_versions := 3.11.3
+ruby_versions := 3.2.2
 terraform_versions := 1.4.2
 v_versions := 0.3.3
 java_versions := adoptopenjdk-17.0.0+35
