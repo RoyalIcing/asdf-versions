@@ -23,7 +23,7 @@ fn_version_regex = $(subst $(SPACE),|,$(subst .,\.,$(1)))
 default: pull install_parallel
 
 pull:
-	git pull --rebase
+	-git pull --rebase
 
 install_parallel: asdf
 	$(MAKE) plugins
