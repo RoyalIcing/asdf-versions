@@ -115,6 +115,12 @@ extra:
 	pip install -q datasette-publish-fly
 	asdf reshim python
 	rustup target add wasm32-unknown-unknown
+	cargo install hyperfine
+	cargo install tokei
+	cargo install xh
+	cargo install ouch
+	cargo install fend
+	asdf reshim rust
 
 postgres_latest:
 	POSTGRES_EXTRA_CONFIGURE_OPTIONS="--with-openssl --with-libraries=/usr/local/lib:/opt/homebrew/opt/openssl/lib --with-includes=/usr/local/include:/opt/homebrew/opt/openssl/include" asdf install postgres latest
