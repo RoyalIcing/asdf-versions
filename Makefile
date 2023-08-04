@@ -1,6 +1,6 @@
 include ./config.makefile
 
-names := erlang elixir gleam golang nodejs deno bun dotnet python opam clojure redis ruby rust terraform v java zig sbcl swiprolog
+names := erlang elixir gleam golang nodejs deno bun python opam clojure redis ruby rust terraform v java zig sbcl swiprolog
 
 .PHONY: pull install install_parallel asdf plugins
 
@@ -88,7 +88,6 @@ global:
 	asdf global nodejs $(firstword $(nodejs_versions)) || true
 	asdf global deno $(firstword $(deno_versions)) || true
 	asdf global bun $(firstword $(bun_versions)) || true
-	asdf global dotnet $(firstword $(dotnet_versions)) || true
 	asdf global python $(firstword $(python_versions)) || true
 	asdf global clojure $(firstword $(clojure_versions)) || true
 	asdf global opam $(firstword $(opam_versions)) || true
@@ -141,7 +140,6 @@ plugins: asdf
 	@-asdf plugin-add deno             || true
 	@-asdf plugin-add opam             || true
 	@-asdf plugin-add postgres         || true
-	@-asdf plugin-add dotnet           || true
 	@-asdf plugin-add python           || true
 	@-asdf plugin-add rebar            || true
 	@-asdf plugin-add redis            || true
