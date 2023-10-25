@@ -90,6 +90,7 @@ global:
 	asdf global bun $(firstword $(bun_versions)) || true
 	asdf global python $(firstword $(python_versions)) || true
 	asdf global clojure $(firstword $(clojure_versions)) || true
+	asdf global redis $(firstword $(redis_versions)) || true
 	asdf global opam $(firstword $(opam_versions)) || true
 	asdf global ruby $(firstword $(ruby_versions)) || true
 	asdf global rust $(firstword $(rust_versions)) || true
