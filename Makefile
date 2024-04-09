@@ -1,6 +1,6 @@
 include ./config.makefile
 
-names := erlang elixir gleam golang nodejs deno bun python opam clojure redis ruby rust terraform v java zig sbcl swiprolog
+names := erlang elixir gleam golang nodejs deno bun python postgres opam clojure redis ruby rust terraform v java zig sbcl swiprolog
 
 .PHONY: pull install install_parallel asdf plugins
 
@@ -16,7 +16,8 @@ export CPP = clang -E
 export KERL_USE_AUTOCONF = 0
 
 # Postgres
-export POSTGRES_EXTRA_CONFIGURE_OPTIONS="--with-openssl --with-libraries=/usr/local/lib:/opt/homebrew/opt/openssl/lib --with-includes=/usr/local/include:/opt/homebrew/opt/openssl/include"
+POSTGRES_EXTRA_CONFIGURE_OPTIONS := "--with-openssl --with-libraries=/usr/local/lib:/opt/homebrew/opt/openssl/lib --with-includes=/usr/local/include:/opt/homebrew/opt/openssl/include"
+PKG_CONFIG_PATH := "/opt/homebrew/bin/pkg-config:$(shell brew --prefix icu4c)/lib/pkgconfig:$(shell brew --prefix curl)/lib/pkgconfig:$(shell brew --prefix zlib)/lib/pkgconfig"
 
 fn_version_regex = $(subst $(SPACE),|,$(subst .,\.,$(1)))
 
@@ -66,7 +67,7 @@ plan:
 # Define tasks such as golang_1.13.5
 $(foreach task,$(install_tasks),$(task)): asdf
 	#asdf plugin update $(firstword $(subst _, ,$@))
-	asdf install $(subst _, ,$@)
+	unset MAKELEVEL && unset MAKEFLAGS && unset MFLAGS && POSTGRES_EXTRA_CONFIGURE_OPTIONS=$(POSTGRES_EXTRA_CONFIGURE_OPTIONS) PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) asdf install $(subst _, ,$@)
 
 install: $(install_tasks)
 
@@ -124,7 +125,7 @@ extra:
 	asdf reshim rust
 
 postgres_latest:
-	POSTGRES_EXTRA_CONFIGURE_OPTIONS="--with-openssl --with-libraries=/usr/local/lib:/opt/homebrew/opt/openssl/lib --with-includes=/usr/local/include:/opt/homebrew/opt/openssl/include" asdf install postgres latest
+	POSTGRES_EXTRA_CONFIGURE_OPTIONS=$(POSTGRES_EXTRA_CONFIGURE_OPTIONS) PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) asdf install postgres latest
 
 plugins: asdf
 	@-asdf plugin-add clojure          || true

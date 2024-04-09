@@ -12,6 +12,7 @@ rust_versions := 1.77.0
 clojure_versions := 1.11.2.1446
 redis_versions := 7.2.4
 python_versions := 3.10.13 3.12.2
+postgres_versions := 16.0
 ruby_versions := 3.3.0
 terraform_versions := 1.7.4
 v_versions := 0.3.3
