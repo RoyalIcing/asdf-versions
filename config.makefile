@@ -1,7 +1,7 @@
 arch = $(shell arch)
 
 erlang_versions := 27.0
-elixir_versions := 1.16.3-otp-26
+elixir_versions := 1.17.0-otp-27
 gleam_versions := 1.2.1
 golang_versions := 1.22.2 1.18.4 1.17.8
 nodejs_versions := 20.12.0
