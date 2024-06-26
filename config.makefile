@@ -1,19 +1,19 @@
 arch = $(shell arch)
 
 erlang_versions := 27.0
-elixir_versions := 1.17.0-otp-27
+elixir_versions := 1.17.1-otp-27
 gleam_versions := 1.2.1
 golang_versions := 1.22.4 1.18.4 1.17.8
 nodejs_versions := 20.12.0
-deno_versions := 1.44.2
-bun_versions := 1.1.13
+deno_versions := 1.44.4
+bun_versions := 1.1.17
 zig_versions := 0.13.0
 rust_versions := 1.79.0
 clojure_versions := 1.11.3.1463
-redis_versions := 7.2.4
-python_versions := 3.10.13 3.12.3
+redis_versions := 7.2.5
+python_versions := 3.10.13 3.12.4
 postgres_versions := 16.0
-ruby_versions := 3.3.2
+ruby_versions := 3.3.3
 terraform_versions := 1.7.4
 v_versions := 0.3.3
 java_versions := adoptopenjdk-17.0.0+35
