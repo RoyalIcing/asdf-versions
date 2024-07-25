@@ -122,6 +122,7 @@ extra:
 	cargo install xh
 	cargo install ouch
 	cargo install fend
+	cargo install exa
 	asdf reshim rust
 
 postgres_latest:
