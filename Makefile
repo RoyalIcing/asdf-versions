@@ -67,7 +67,7 @@ plan:
 # Define tasks such as golang_1.13.5
 $(foreach task,$(install_tasks),$(task)): asdf
 	#asdf plugin update $(firstword $(subst _, ,$@))
-	unset MAKELEVEL && unset MAKEFLAGS && unset MFLAGS && POSTGRES_EXTRA_CONFIGURE_OPTIONS=$(POSTGRES_EXTRA_CONFIGURE_OPTIONS) PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) asdf install $(subst _, ,$@)
+	unset MAKELEVEL && unset MAKEFLAGS && unset MFLAGS && ulimit -n 10240 && POSTGRES_EXTRA_CONFIGURE_OPTIONS=$(POSTGRES_EXTRA_CONFIGURE_OPTIONS) PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) asdf install $(subst _, ,$@)
 
 install: $(install_tasks)
 
