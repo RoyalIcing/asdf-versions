@@ -107,6 +107,7 @@ extra:
 	npm i -g --no-fund npm
 	pip install -q -U pip
 	pip install -q httpstat
+	pip install -q yt-dlp
 	pip install -q mycli
 	pip install -q sqlite-utils
 	pip install -q datasette
