@@ -1,6 +1,6 @@
 arch = $(shell arch)
 
-erlang_versions := 27.1.2
+erlang_versions := 27.2
 elixir_versions := 1.17.3-otp-27
 gleam_versions := 1.6.3
 golang_versions := 1.23.4 1.18.4 1.17.8
