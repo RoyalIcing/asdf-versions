@@ -43,7 +43,7 @@ define fn_list_named
 endef
 
 $(foreach name,$(names),$(name)):
-	@echo "$@ | latest:" $(shell asdf latest $@) "|" "current:" $($(@)_versions)
+	@echo "$@" $(shell asdf latest $@) "\t\t current:" $($(@)_versions)
 
 # Lazy but run once
 all_terraform_versions = $(eval all_terraform_versions := $(shell asdf list-all terraform))$(all_terraform_versions)
