@@ -130,31 +130,31 @@ postgres_latest:
 	POSTGRES_EXTRA_CONFIGURE_OPTIONS=$(POSTGRES_EXTRA_CONFIGURE_OPTIONS) PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) asdf install postgres latest
 
 plugins: asdf
-	@-asdf plugin-add clojure          || true
-	@-asdf plugin-add crystal          || true
-	@-asdf plugin-add dep              || true
-	@-asdf plugin-add erlang           || true
-	@-asdf plugin-add elixir           || true
-	@-asdf plugin-add gleam            || true
-	@-asdf plugin-add elm              || true
-	@-asdf plugin-add golang           || true
-	@-asdf plugin-add haskell          || true
-	@-asdf plugin-add java             || true
-	@-asdf plugin-add nodejs           || true
-	@-asdf plugin-add deno             || true
-	@-asdf plugin-add opam             || true
-	@-asdf plugin-add postgres         || true
-	@-asdf plugin-add python           || true
-	@-asdf plugin-add rebar            || true
-	@-asdf plugin-add redis            || true
-	@-asdf plugin-add ruby             || true
-	@-asdf plugin-add rust             || true
-	@-asdf plugin-add consul           || true
-	@-asdf plugin-add packer           || true
-	@-asdf plugin-add terraform        || true
-	@-asdf plugin-add vault            || true
-	@-asdf plugin-add swiprolog        || true
-	@-asdf plugin-add v || true
+	@-asdf plugin add clojure          || true
+	@-asdf plugin add crystal          || true
+	@-asdf plugin add dep              || true
+	@-asdf plugin add erlang           || true
+	@-asdf plugin add elixir           || true
+	@-asdf plugin add gleam            || true
+	@-asdf plugin add elm              || true
+	@-asdf plugin add golang           || true
+	@-asdf plugin add haskell          || true
+	@-asdf plugin add java             || true
+	@-asdf plugin add nodejs           || true
+	@-asdf plugin add deno             || true
+	@-asdf plugin add opam             || true
+	@-asdf plugin add postgres         || true
+	@-asdf plugin add python           || true
+	@-asdf plugin add rebar            || true
+	@-asdf plugin add redis            || true
+	@-asdf plugin add ruby             || true
+	@-asdf plugin add rust             || true
+	@-asdf plugin add consul           || true
+	@-asdf plugin add packer           || true
+	@-asdf plugin add terraform        || true
+	@-asdf plugin add vault            || true
+	@-asdf plugin add swiprolog        || true
+	@-asdf plugin add v || true
 	@-asdf plugin add zig || true
 	@-asdf plugin add sbcl https://github.com/smashedtoatoms/asdf-sbcl.git || true
-	@asdf plugin-update --all          >/dev/null
+	@asdf plugin update --all          >/dev/null
