@@ -82,25 +82,25 @@ $(foreach name,$(names),update_$(name)): asdf
 	git commit -m "Update $(subst update_,,$@)"
 
 global:
-	asdf set -h erlang $(firstword $(erlang_versions)) || true
-	asdf set -h elixir $(firstword $(elixir_versions)) || true
-	asdf set -h gleam $(firstword $(gleam_versions)) || true
-	asdf set -h golang $(firstword $(golang_versions)) || true
-	asdf set -h nodejs $(firstword $(nodejs_versions)) || true
-	asdf set -h deno $(firstword $(deno_versions)) || true
-	asdf set -h bun $(firstword $(bun_versions)) || true
-	asdf set -h python $(firstword $(python_versions)) || true
-	asdf set -h clojure $(firstword $(clojure_versions)) || true
-	asdf set -h redis $(firstword $(redis_versions)) || true
-	asdf set -h opam $(firstword $(opam_versions)) || true
-	asdf set -h ruby $(firstword $(ruby_versions)) || true
-	asdf set -h rust $(firstword $(rust_versions)) || true
-	asdf set -h terraform $(firstword $(terraform_versions)) || true
-	asdf set -h v $(firstword $(v_versions)) || true
-	asdf set -h java $(firstword $(java_versions)) || true
-	asdf set -h zig $(firstword $(zig_versions)) || true
-	asdf set -h sbcl $(firstword $(sbcl_versions)) || true
-	asdf set -h swiprolog $(firstword $(swiprolog_versions)) || true
+	asdf set -u erlang $(firstword $(erlang_versions)) || true
+	asdf set -u elixir $(firstword $(elixir_versions)) || true
+	asdf set -u gleam $(firstword $(gleam_versions)) || true
+	asdf set -u golang $(firstword $(golang_versions)) || true
+	asdf set -u nodejs $(firstword $(nodejs_versions)) || true
+	asdf set -u deno $(firstword $(deno_versions)) || true
+	asdf set -u bun $(firstword $(bun_versions)) || true
+	asdf set -u python $(firstword $(python_versions)) || true
+	asdf set -u clojure $(firstword $(clojure_versions)) || true
+	asdf set -u redis $(firstword $(redis_versions)) || true
+	asdf set -u opam $(firstword $(opam_versions)) || true
+	asdf set -u ruby $(firstword $(ruby_versions)) || true
+	asdf set -u rust $(firstword $(rust_versions)) || true
+	asdf set -u terraform $(firstword $(terraform_versions)) || true
+	asdf set -u v $(firstword $(v_versions)) || true
+	asdf set -u java $(firstword $(java_versions)) || true
+	asdf set -u zig $(firstword $(zig_versions)) || true
+	asdf set -u sbcl $(firstword $(sbcl_versions)) || true
+	asdf set -u swiprolog $(firstword $(swiprolog_versions)) || true
 
 extra:
 	asdf reshim
