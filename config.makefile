@@ -1,12 +1,12 @@
 arch = $(shell arch)
 
-erlang_versions := 27.3.1
-elixir_versions := 1.18.2-otp-27
-gleam_versions := 1.7.0
-golang_versions := 1.24.0 1.18.4 1.17.8
+erlang_versions := 27.3.3
+elixir_versions := 1.18.3-otp-27
+gleam_versions := 1.10.0
+golang_versions := 1.24.3 1.18.4 1.17.8
 nodejs_versions := 22.12.0
 deno_versions := 2.2.2
-bun_versions := 1.2.4
+bun_versions := 1.2.12
 zig_versions := 0.13.0
 rust_versions := 1.86.0
 clojure_versions := 1.12.0.1495
