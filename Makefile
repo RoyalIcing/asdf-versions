@@ -2,7 +2,7 @@ include ./config.makefile
 
 names := erlang elixir gleam golang nodejs deno bun python postgres opam clojure redis ruby rust terraform v java zig sbcl swiprolog
 
-.PHONY: pull install install_parallel asdf plugins
+.PHONY: pull install install_parallel asdf plugins uninstall_old_rust
 
 SPACE := $() $()
 ERROR_COLOR=\x1b[31;01m
@@ -128,6 +128,12 @@ extra:
 
 postgres_latest:
 	POSTGRES_EXTRA_CONFIGURE_OPTIONS=$(POSTGRES_EXTRA_CONFIGURE_OPTIONS) PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) asdf install postgres latest
+
+# Define tasks such as uninstall_old_rust
+$(foreach name,$(names),uninstall_old_$(name)):
+	@echo "Uninstalling old $(subst uninstall_old_,,$@) versions (keeping current)..."
+	@asdf list $(subst uninstall_old_,,$@) | grep -v '\*' | sed 's/^[ ]*//' | xargs -I {} asdf uninstall $(subst uninstall_old_,,$@) {} || true
+	@echo "Done! Only current $(subst uninstall_old_,,$@) version remains."
 
 plugins: asdf
 	@-asdf plugin add clojure          || true
