@@ -1,6 +1,6 @@
 include ./config.makefile
 
-names := erlang elixir gleam golang nodejs deno bun python postgres opam clojure redis ruby rust terraform v java zig sbcl swiprolog
+names := erlang elixir gleam golang nodejs deno bun python postgres opam clojure redis ruby rust terraform v zig sbcl swiprolog
 
 .PHONY: pull install install_parallel asdf plugins uninstall_old_rust
 
@@ -31,9 +31,6 @@ install_parallel: asdf
 	$(MAKE) -j 10 install
 	$(MAKE) global
 	$(MAKE) extra
-
-asdf:
-	#asdf update
 
 LIMIT ?= 5
 
@@ -97,14 +94,16 @@ global:
 	asdf set -u rust $(firstword $(rust_versions)) || true
 	asdf set -u terraform $(firstword $(terraform_versions)) || true
 	asdf set -u v $(firstword $(v_versions)) || true
-	asdf set -u java $(firstword $(java_versions)) || true
 	asdf set -u zig $(firstword $(zig_versions)) || true
 	asdf set -u sbcl $(firstword $(sbcl_versions)) || true
 	asdf set -u swiprolog $(firstword $(swiprolog_versions)) || true
 
 extra:
+	git config --global rerere.enabled true
 	asdf reshim
 	npm i -g --no-fund npm
+	npm install -g @anthropic-ai/claude-code
+	npm install -g @google/gemini-cli
 	pip install -q -U pip
 	pip install -q httpstat
 	pip install -q yt-dlp
